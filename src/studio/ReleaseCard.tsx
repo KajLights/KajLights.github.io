@@ -2,12 +2,12 @@ import { bytesLabel, shortId } from "../lib/catalogue.mjs";
 export const featureNames: Record<string, string> = {
   mqtt: "MQTT",
   home_assistant: "Home Assistant",
-  audio_subscriptions: "UDP audio subscriptions",
-  audio_gateway: "Structured audio gateway",
+  audio_subscriptions: "Receive sound measurements (UDP)",
+  audio_gateway: "Receive sound measurements over USB or HTTP",
   wifi: "Wi-Fi",
-  http_api: "HTTP management",
+  http_api: "Network control (HTTP)",
   websocket_management: "WebSocket management",
-  usb_management: "USB management",
+  usb_management: "USB control",
   device_metadata: "Device names",
   light_output: "Light output",
   program_storage: "Program storage",
@@ -19,7 +19,7 @@ export const featureNames: Record<string, string> = {
   power_recovery: "Power recovery",
   configuration: "Configuration",
   audio_analysis: "Audio analysis",
-  audio_publisher: "Audio publisher",
+  audio_publisher: "Send sound measurements",
   pdm_microphone: "Sense microphone",
   synthetic_audio: "Synthetic input",
 };
@@ -85,31 +85,31 @@ export default function ReleaseCard({
             ? "UDP audio included"
             : "No UDP audio"}
         </span>
-        <span className="badge">Local install · no OTA</span>
+        <span className="badge">Install over USB</span>
       </div>
       <dl className="facts">
         <div>
-          <dt>Application image</dt>
+          <dt>Firmware size</dt>
           <dd>{bytesLabel(entry.artifact.capacity.firmware_bytes)}</dd>
         </div>
         <div>
-          <dt>Saved-content region</dt>
+          <dt>Space for saved work</dt>
           <dd>{bytesLabel(entry.artifact.capacity.storage_bytes)}</dd>
         </div>
         <div>
-          <dt>VM memory</dt>
+          <dt>Memory for running animations</dt>
           <dd>{bytesLabel(entry.artifact.limits.vm_heap_bytes)}</dd>
         </div>
       </dl>
       {entry.policy.withdrawn ? (
         <p className="error">
           {entry.policy.reason ||
-            "This build is not available for ordinary installation."}
+            "This build has been withdrawn and cannot be installed here."}
         </p>
       ) : (
         entry.policy.accepted_methods.length === 0 && (
           <p className="small muted">
-            Local installation is not enabled for this build yet.
+            Installation is not yet approved for this build.
           </p>
         )
       )}

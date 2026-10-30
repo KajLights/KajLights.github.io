@@ -19,19 +19,18 @@ const pattern = [
         <em>Big ideas.</em>
       </h1>
       <p class="intro">
-        Learn electronics, computing and communications by making things with
-        microcontrollers: small computers that connect ideas to the physical
-        world.
+        Learn electronics, computing and networking by making things with
+        microcontrollers — small computers you can connect to lights, sensors
+        and other devices.
       </p>
       <p>
-        Make a light glow. Find out how power, instructions and messages make it
-        happen. Use that understanding to imagine what else you could build.
-        KajLights is an experimental workshop for curious people, with a browser
-        playground and projects to make on your desk.
+        Connect a strip of lights. Make a colour move from one end to the other.
+        Find out how the circuit, the program and the signals make it happen.
+        Each thing you understand gives you another idea for what to build.
       </p>
       <div class="actions">
         <a class="button dark" href="https://kajlights.github.io/lightvm/">
-          Try without a board <span aria-hidden="true">↗</span>
+          Try the browser lessons <span aria-hidden="true">↗</span>
         </a>
         <a class="text-link" href={`${base}build/`}>
           Build your first lights →
@@ -40,8 +39,8 @@ const pattern = [
     </div>
     <figure class="light-study">
       <div class="study-label">
-        <span>01 / A LITTLE SYSTEM</span>
-        <span>INPUT → RULE → LIGHT</span>
+        <span>A PATTERN MADE FROM INSTRUCTIONS</span>
+        <span>COMPUTER → SIGNAL → LIGHT</span>
       </div>
       <div
         class="led-grid"
@@ -53,9 +52,8 @@ const pattern = [
         ))}
       </div>
       <figcaption>
-        A simple rule can make a surprising pattern.
-        <br />
-        The interesting part is finding out why.
+        Which lights should change next?
+        <br />A program turns your rule into a pattern.
       </figcaption>
     </figure>
   </section>
@@ -64,61 +62,58 @@ const pattern = [
       <p class="eyebrow">A WORKSHOP IN PROGRESS</p>
       <h2 id="early-testing">Early testing. A few rough edges included.</h2>
       <p>
-        KajLights is still a proof of concept. Expect bugs, missing features and
-        gaps in the instructions — sometimes all three at once. Things will
-        change, and a board may need wiping and setting up again. This is a
-        place to experiment, rather than a finished kit or a dependable
-        home-lighting system just yet.
+        KajLights is an experimental project. Some things work, some are
+        unfinished, and some will need another go. The browser lessons are ready
+        to try; check the firmware catalogue before buying a board. Hardware
+        setup may still need developer tools.
       </p>
       <p>
         Something confusing or broken?{" "}
         <a href="https://github.com/KajLights/KajLights.github.io/issues">
           Tell us what you tried
         </a>
-        . Finding the rough edges helps make the next person’s first steps
-        easier.
+        . Your feedback helps improve the guides and the software.
       </p>
     </div>
   </aside>
   <section class="wrap section split">
     <div>
-      <p class="eyebrow">UNDERSTAND THE WHOLE LITTLE SYSTEM</p>
-      <h2>A light is the beginning of a bigger idea.</h2>
+      <p class="eyebrow">FROM A WORKING LIGHT TO AN IDEA OF YOUR OWN</p>
+      <h2>What could you make with this?</h2>
     </div>
     <div>
       <p>
-        The circuit supplies energy. The microcontroller runs instructions. A
-        signal tells each LED what colour to show. A network can carry a message
-        from somewhere else. Following that chain connects electronics,
-        computing and communications in one project you can see and investigate.
+        A light by your door could mean “come in” or “busy”. A row of lights
+        could count down to the start of a game. A moving beam could become a
+        lighthouse in a model harbour. These projects start with the same parts,
+        used in different ways.
       </p>
       <p>
-        LightVM is the lighting part of the project: write patterns using
-        Python, JavaScript or visual blocks, preview them on screen, and run
-        them on a small controller. The companion kaj-fi project explores sound
-        analysis and sharing audio features between devices; its public firmware
-        is not yet available.
+        LightVM is the software behind the lights. Its editor lets you write
+        programs with Python, JavaScript or visual blocks, try them on screen
+        and run them on a board. The learning activities help you explore what
+        happens from the instructions you write to the light you see.
       </p>
       <p>
-        Play with an example, ask why it behaves that way, or make something of
-        your own. You don’t need a board or an account to try the browser
-        playground. Our learning path connects those first experiments to real
-        circuits and, when you’re ready, connected devices.
+        Start with an example and change something. Follow the build guide if
+        you want to work with real lights, or try the browser lessons with no
+        hardware or account. You can explore, investigate and make at your own
+        pace.
       </p>
       <div class="actions">
         <a class="text-link" href={`${base}learn/`}>
-          Choose a learning starting point →
+          Find an activity →
         </a>
       </div>
     </div>
   </section>
   <section class="wrap section">
     <div class="section-heading">
-      <p class="eyebrow">THREE THREADS, ONE PROJECT</p>
+      <p class="eyebrow">THREE WAYS TO UNDERSTAND YOUR PROJECT</p>
       <h2>
-        Something to make.
+        Connect it. Program it.
         <br />
-        Something to figure out.
+        Talk to it.
       </h2>
     </div>
     <div class="subjects">
@@ -126,8 +121,9 @@ const pattern = [
         <span class="number">01</span>
         <h3>Electronics</h3>
         <p>
-          Power, current, connections and signals. Trace the circuit, recognise
-          the parts and learn why a data wire cannot power a strip of lights.
+          Connect the power, ground and data wires. Change the colour without
+          moving a wire. Discover how electrical power and information do
+          different jobs in the same circuit.
         </p>
         <a class="text-link" href={`${base}learn/#electronics`}>
           Follow the circuit →
@@ -137,8 +133,9 @@ const pattern = [
         <span class="number">02</span>
         <h3>Computing</h3>
         <p>
-          Instructions, state, memory and time. Predict a pattern, change a rule
-          and investigate how a processor turns a program into behaviour.
+          Make a dot move along a strip. Pause the program and inspect its
+          position. Find out how a computer uses instructions, memory and time
+          to decide what happens next.
         </p>
         <a class="text-link" href={`${base}learn/#computing`}>
           Explore the instructions →
@@ -148,8 +145,9 @@ const pattern = [
         <span class="number">03</span>
         <h3>Networking & communications</h3>
         <p>
-          Messages, addresses and shared rules. Explore how devices find one
-          another, exchange information and behave when a connection goes away.
+          Save a name on your board over USB, then read it over Wi-Fi. Follow
+          the messages between two computers and learn how an address helps them
+          reach the right place.
         </p>
         <a class="text-link" href={`${base}learn/#communications`}>
           Follow a message →
@@ -159,37 +157,36 @@ const pattern = [
   </section>
   <section class="wrap section split" aria-labelledby="imagine-title">
     <div>
-      <p class="eyebrow">MAKING IN AN AI-READY WORLD</p>
+      <p class="eyebrow">IMAGINE IT. DESCRIBE IT. TRY IT.</p>
       <h2 id="imagine-title">
-        Understanding gives imagination more to work with.
+        The more you understand, the more you can imagine.
       </h2>
     </div>
     <div>
       <p>
-        AI can help you write a program or develop an idea. Knowing what a
-        sensor can measure, what a microcontroller can control and how a message
-        travels helps you recognise possibilities, ask better questions and
-        judge whether the result makes sense.
+        Once you know a board can keep time and control each light, you can
+        imagine a countdown. Once you know it can receive messages, you can
+        imagine starting that countdown from another device.
       </p>
       <p>
-        “If you can’t imagine it, you can’t ask for it to be built.” The aim is
-        to grow that imagination through experience: try something, explain what
-        happened and use what you learn to make the next thing.
+        AI can help build those ideas. Understanding the parts helps you say
+        what you want, ask useful questions and check the result. KajLights aims
+        to give you that understanding through things you can try yourself.
       </p>
       <a class="text-link" href={`${base}about/#why-understanding`}>
-        Why this matters, and our link with Found in Space →
+        Read about the project’s aims →
       </a>
     </div>
   </section>
   <section class="wrap section split" id="what-is-a-board">
     <div>
-      <p class="eyebrow">FROM SCREEN TO REAL LIGHTS</p>
+      <p class="eyebrow">MEET THE SMALL COMPUTER</p>
       <h2>What’s a board, anyway?</h2>
       <p>
-        A board is a small circuit board with a programmable chip called a
-        microcontroller, a USB socket and connection pins. It runs your lighting
-        program and sends instructions to the LEDs. The LED strip is a separate
-        part: the board is the controller, and the lights show the result.
+        The boards used here have a chip called a microcontroller, a USB socket
+        and pins for connecting other parts. The microcontroller contains a
+        processor and memory. It runs your program and sends instructions to the
+        LED strip, which shows the result.
       </p>
     </div>
     <div>
@@ -201,10 +198,9 @@ const pattern = [
         our hardware guide links to the manufacturers and their retailers.
       </p>
       <p>
-        “Build your own” means connecting that board to a few LEDs and
-        installing LightVM, the software that runs on it. Choose the exact model
-        in the guide and check firmware availability before buying: not every
-        board with a similar name can use the same software.
+        The build guide uses a Pico 2 W and an LED strip. It shows the parts,
+        three wire connections and how to run your first colour. An adult helper
+        prepares the board and checks the wiring with you.
       </p>
       <div class="actions">
         <a class="text-link" href={`${base}hardware/#find-a-board`}>
@@ -219,17 +215,16 @@ const pattern = [
   <section class="setup-band">
     <div class="wrap split">
       <div>
-        <p class="eyebrow">BUILD YOUR OWN BOARD SETUP</p>
+        <p class="eyebrow">BUILD YOUR FIRST LIGHTS</p>
         <h2>
-          Your first
+          Three wires.
           <br />
-          little light project.
+          Your first colour.
         </h2>
         <p>
-          Start with a Pico, a USB data cable, an addressable LED strip or ring
-          and connecting wires. USB powers the first build through the Pico’s
-          VBUS pin. Make your first colour, try a challenge, then explore extra
-          power and other upgrades as your project grows.
+          A Pico, a USB cable and a strip of lights are the starting point.
+          Connect them, choose a colour and make a signal someone else can
+          recognise. The guide explains each part as you use it.
         </p>
       </div>
       <ol class="journey">
@@ -238,8 +233,8 @@ const pattern = [
           <div>
             <h3>Gather the bits</h3>
             <p>
-              Ask an adult helper to get a board ready and check the power.
-              Fitted pins and wires make it easier to connect.
+              Use the parts list and pictures to find the board, lights and
+              wires. Ask your helper to prepare the board.
             </p>
           </div>
         </li>
@@ -248,8 +243,8 @@ const pattern = [
           <div>
             <h3>Connect and set up</h3>
             <p>
-              Follow the quick diagram: a Pico can send colour instructions
-              straight to the first LED. Check the connections together.
+              Follow the diagram for power, ground and data. Check the three
+              wires together, then plug in USB.
             </p>
           </div>
         </li>
@@ -258,8 +253,8 @@ const pattern = [
           <div>
             <h3>Make something glow</h3>
             <p>
-              Choose a colour at low brightness. Invent a secret light signal,
-              change a pattern, or investigate a mystery in the circuit.
+              Choose a colour. Change it. Invent a light signal, or make your
+              first moving pattern.
             </p>
           </div>
         </li>

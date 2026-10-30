@@ -2,13 +2,13 @@
   {
     "id": "lightvm",
     "name": "LightVM",
-    "description": "Explore electronics, computing and communications through programmable lights and microcontrollers.",
+    "description": "Run lighting patterns on a microcontroller or try them in the browser.",
     "available": true
   },
   {
     "id": "kaj-fi",
     "name": "kaj-fi",
-    "description": "Explore signals and systems with a small audio analyser. Raw sound stays on the device.",
+    "description": "Measure sound and send the results to other devices, including lights.",
     "available": false
   }
 ]

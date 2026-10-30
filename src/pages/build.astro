@@ -7,7 +7,7 @@ const parts = [
     file: "neopixel.png",
     name: "An addressable RGB pixel",
     description:
-      "A single pixel shown close up. Use a prewired 5 V RGB strip or ring; the data travels from one pixel to the next.",
+      "Each pixel has red, green and blue lights inside. Buy a 5 V addressable RGB strip or ring with wires already attached.",
   },
   {
     file: "breadboard.png",
@@ -25,13 +25,13 @@ const parts = [
     file: "resistor-330r.png",
     name: "Data resistor",
     description:
-      "For a later upgrade: this is a 330 Ω resistor. It goes in the data wire near the first LED. The quick Pico route works without one; it is worth adding when making a more robust build.",
+      "This 330 Ω resistor is used in the later signal experiment. It goes in the data wire near the first LED to reduce signal spikes.",
   },
   {
     file: "capacitor.png",
     name: "Electrolytic capacitor",
     description:
-      "For the later power upgrade: a capacitor helps smooth sudden power changes. Choose 500–1000 µF, rated at least 6.3 V. The stripe marks the negative side; check your own part.",
+      "Used in the later power experiment to store a small amount of energy. The stripe marks the negative side. The helper notes give the size and rating to buy.",
   },
 ];
 ---
@@ -41,7 +41,7 @@ const parts = [
   description="Make a light glow, change its colour and try a challenge. A quick Pico wiring route, with help for adults and experiments to discover how it works."
 >
   <section class="wrap page-intro narrow">
-    <p class="eyebrow">YOUR FIRST MISSION</p>
+    <p class="eyebrow">BUILD WITH A MICROCONTROLLER</p>
     <h1>Make a light glow.</h1>
     <p class="intro">Then make it your favourite colour.</p>
     <p>
@@ -55,13 +55,13 @@ const parts = [
       </a>
     </div>
     <nav class="guide-links" aria-label="In this build guide">
-      <a href="#parts">Get the bits</a>
+      <a href="#parts">Parts</a>
       <a href="#connections">Connect</a>
       <a href="#first-pattern">First colour</a>
       <a href="#try-next">Try a challenge</a>
       <a href="#meet-the-boards">Board pictures</a>
-      <a href="#more-power">More lights</a>
-      <a href="#make-it-reliable">Make it reliable</a>
+      <a href="#more-power">Explore power</a>
+      <a href="#make-it-reliable">Explore signals</a>
     </nav>
   </section>
   <section class="wrap narrow" id="before-you-buy">
@@ -77,7 +77,7 @@ const parts = [
   </section>
   <section class="wrap section narrow prose" id="parts">
     <p class="eyebrow">1 / GET READY TO MAKE SOMETHING</p>
-    <h2>Get your bits together.</h2>
+    <h2>Gather the parts.</h2>
     <ul class="parts-list">
       <li>
         <strong>A Raspberry Pi Pico 2 W</strong> with LightVM already installed.
@@ -99,13 +99,12 @@ const parts = [
       </li>
     </ul>
     <p>
-      That is enough to get started: USB supplies the power, and the Pico sends
-      colour instructions straight to the lights. Extra power and signal parts
-      come <a href="#more-power">later, as your project grows</a>.
+      USB powers the board and lights. The Pico sends colour instructions to the
+      first pixel, which passes data along the strip.
     </p>
     <div class="guide-links">
       <a href="#meet-the-boards">What do the boards look like?</a>
-      <a href="#parts-in-pictures">What do the smaller bits look like?</a>
+      <a href="#parts-in-pictures">What do the components look like?</a>
     </div>
     <details class="guide-detail" id="adult-setup">
       <summary>For your adult helper: buying and preparing the board</summary>
@@ -180,7 +179,7 @@ const parts = [
           src={`${base}assets/hardware/pico2w-direct.svg`}
           width="1280"
           height="680"
-          alt="Computer connects to Pico 2 W by USB. Three wires connect the Pico to the LED strip: VBUS to 5 V, GND to GND, and GP16 directly to DIN. No separate power supply, capacitor, resistor or level shifter."
+          alt="Computer connects to Pico 2 W by USB. Three wires connect the Pico to the LED strip: VBUS to 5 V, GND to GND, and GP16 directly to DIN. USB supplies the power for both board and strip."
           loading="lazy"
         />
       </a>
@@ -194,17 +193,18 @@ const parts = [
       </figcaption>
     </figure>
     <div class="concept-note">
-      <h3>Spot the two different jobs.</h3>
+      <h3>Power makes it shine. Data chooses the colour.</h3>
       <p>
-        The power wires make the lights able to shine. The data wire tells them
-        which colour to show. Can you trace each path with your finger?
+        Trace the power path from USB through VBUS to the strip. Now trace the
+        data path from GP16 to DIN. When you choose a new colour, the Pico
+        changes the data it sends.
       </p>
     </div>
     <details class="guide-detail">
       <summary>Helper’s wiring check: finding the right pins</summary>
       <p>
         On a Pico 2 W, <strong>VBUS is physical pin 40</strong>, GP16 is pin 21,
-        and GND is available at several pins, including pin 23. Check the
+        and GND is available at several pins, including pin 23. Check the{" "}
         <a href="https://datasheets.raspberrypi.com/picow/pico-2-w-datasheet.pdf">
           official Pico 2 W pin diagram
         </a>
@@ -287,55 +287,59 @@ const parts = [
     </details>
   </section>
   <section class="wrap section" id="try-next">
-    <p class="eyebrow">GOT A GLOW? PICK A CHALLENGE.</p>
-    <h2>Try it. Notice something. Try again.</h2>
+    <p class="eyebrow">WHAT WILL YOU MAKE IT DO?</p>
+    <h2>Give your lights a job.</h2>
     <div class="subjects board-anatomy">
       <article>
         <h3>Invent a signal</h3>
         <p>
-          Pick colours for “come in”, “busy” and “snack time”. Can someone else
-          guess your message?
+          Choose one colour for “come in” and another for “busy”. Tell someone
+          what they mean, then see if they can read your signal.
         </p>
-        <p>Explore: computers can use light to carry information.</p>
+        <p>
+          You have used colour to carry a message. Both people need to agree
+          what the colours mean.
+        </p>
       </article>
       <article>
         <h3>Make it move</h3>
         <p>
-          Try <strong>rainbow.py</strong>, or a lesson under{" "}
-          <strong>Learn with lights</strong>. Predict what one change will do,
-          then try it.
+          Open <strong>Learn with lights → Remember movement</strong>. Make a
+          dot travel along the strip, then try reversing its direction.
         </p>
         <p>
-          Explore: a small change in instructions can change a whole pattern.
+          The program remembers the dot’s position and changes it for each
+          picture. What would make it move twice as fast?
         </p>
       </article>
       <article>
-        <h3>Be a wire detective</h3>
+        <h3>Find the computer</h3>
         <p>
-          Unplug USB. Trace the data wire from Pico to first pixel. Which wires
-          carry the power? Why are they separate?
+          Run an animation on the board, then close the browser tab while
+          leaving USB plugged in. Predict whether the lights will stop.
         </p>
-        <p>Explore: a circuit and a program need each other.</p>
+        <p>
+          The board has its own processor and memory. Once running there, the
+          animation can continue without instructions from the browser.
+        </p>
       </article>
     </div>
   </section>
   <section class="wrap section prose" id="more-power">
-    <p class="eyebrow">NEXT EXPERIMENT / GROW YOUR LIGHTS</p>
+    <p class="eyebrow">EXPLORE POWER</p>
     <h2>Give the lights their own power.</h2>
     <p>
-      Kaj runs a 200-LED strip from a Pico’s USB VBUS connection. There is no
-      single “USB can run this many LEDs” number: the colours, brightness and
-      pattern matter too. As you add more lights or want them brighter, a
-      separate supply gives the project more power to play with.
+      For a larger or brighter project, you can power the LEDs from a separate 5
+      V supply. The Pico still decides what the lights do; the new supply
+      provides their power. Your helper can choose a supply to suit the project.
     </p>
     <p>
-      For this upgrade, add a <strong>5 V LED power supply</strong> and a
-      <strong>capacitor</strong>. The supply provides the extra power. The
-      capacitor holds a little in reserve for sudden changes. Your helper
-      chooses and connects them with you.
+      This circuit also adds a <strong>capacitor</strong> at the strip’s power
+      input. It stores a small amount of energy to help when the lights change
+      brightness suddenly.
     </p>
     <p>
-      <strong>Unplug all power first. Remove the VBUS-to-strip wire.</strong>
+      <strong>Unplug all power first. Remove the VBUS-to-strip wire.</strong>{" "}
       The new supply powers the lights instead; keep the Pico on USB. Join the
       grounds, but never join the new supply’s +5 V to VBUS.
     </p>
@@ -354,7 +358,7 @@ const parts = [
       </a>
       <figcaption>
         The colour instructions take the same route. Only the power wiring
-        changes.
+        changes.{" "}
         <a href={`${base}assets/hardware/pico2w-power.svg`}>
           Open the power diagram at full size ↗
         </a>
@@ -371,7 +375,7 @@ const parts = [
     <details class="guide-detail">
       <summary>Helper’s power upgrade: parts and connections</summary>
       <p>
-        Choose a ready-made enclosed, regulated <strong>5 V DC supply</strong>
+        Choose a ready-made enclosed, regulated <strong>5 V DC supply</strong>{" "}
         and wiring rated for the intended LED load, including full white if that
         will be used. Fit a{" "}
         <strong>500–1000 µF capacitor rated at least 6.3 V</strong> across the
@@ -400,45 +404,38 @@ const parts = [
         Keep the external +5 V off the Pico’s power and GPIO pins in this setup.
         Plan suitable connectors, wire sizes and protection; do not send a long
         strip’s current through breadboard contacts. Longer strips may need
-        power at more than one point. The
+        power at more than one point. The{" "}
         <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels">
           Adafruit power guide
-        </a>
+        </a>{" "}
         explains how to size and distribute power.
       </p>
     </details>
   </section>
   <section class="wrap section narrow prose" id="why-direct-works">
-    <p class="eyebrow">A QUESTION TO COME BACK TO</p>
-    <h2>It works. Why add more parts?</h2>
+    <p class="eyebrow">EXPLORE THE DATA SIGNAL</p>
+    <h2>How does a pixel read the signal?</h2>
     <p>
-      Kaj regularly drives strips straight from Picos, including long strips,
-      without a data resistor or level shifter. That is our quick starting
-      point. He has also seen occasional flashing with an ESP32-C3; the cause
-      could be signal voltage, timing or something else. It has not been pinned
-      down.
+      The Pico sends a rapid sequence of electrical pulses. Each pixel reads its
+      colour from that sequence and passes the remaining data to the next pixel.
+      The voltage and timing of the pulses let it distinguish the bits that make
+      up the message.
     </p>
     <p>
-      A circuit that works on your desk is a great start. Making it keep working
-      with different wires, power supplies and LEDs is your next engineering
-      challenge.
+      Our first build connects the Pico directly to the strip. If a signal is
+      misread, a light may show the wrong colour or flash. The experiments below
+      explore how wiring and extra components can help it arrive clearly.
     </p>
     <details class="guide-detail">
       <summary>Why can a 3.3 V Pico talk to 5 V lights?</summary>
       <p>
-        A light does not need to see exactly 5 V to recognise a “high” signal.
-        Its input has a threshold, and many pixels recognise the Pico’s 3.3 V
-        signal. That threshold varies between LED types and conditions. A level
-        shifter gives the signal more room above it.{" "}
+        A pixel recognises a voltage above a certain threshold as “high”. Many
+        pixels recognise the Pico’s 3.3 V signal, even when powered at 5 V. A
+        level shifter raises that signal for pixels that need a higher voltage.{" "}
         <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/logic-level">
           Adafruit explores why direct drive often works
         </a>
         .
-      </p>
-      <p>
-        <strong>Try explaining it:</strong> a friend can hear you in a quiet
-        room. What changes when the room gets noisy? Electrical signals need
-        their own kind of breathing room.
       </p>
     </details>
     <details class="guide-detail">
@@ -486,8 +483,8 @@ const parts = [
     </details>
   </section>
   <section class="wrap section narrow prose" id="glitches">
-    <p class="eyebrow">SOMETHING WEIRD? YOU HAVE A MYSTERY TO SOLVE.</p>
-    <h2>Be a glitch detective.</h2>
+    <p class="eyebrow">WHEN THE RESULT IS UNEXPECTED</p>
+    <h2>Find out what went wrong.</h2>
     <p>
       Pick one test. Predict what might happen. Change one thing, then check.
       Ask your helper before changing the circuit; unplug all power first.
@@ -536,9 +533,8 @@ const parts = [
       </p>
       <p>
         Compare pulse and reset timing with the actual LED datasheet and
-        firmware output settings. The ESP32-C3 flashing is an open question, not
-        a confirmed voltage or timing fault. Share a reproducible example
-        through the{" "}
+        firmware output settings. Share the setup, the result and the changes
+        you tried through the{" "}
         <a href="https://github.com/KajLights/lightvm/issues">
           LightVM issue tracker
         </a>
@@ -547,33 +543,34 @@ const parts = [
     </details>
   </section>
   <section class="wrap section prose" id="make-it-reliable">
-    <p class="eyebrow">NEXT LEVEL / MAKE IT KEEP WORKING</p>
-    <h2>Give your circuit some breathing room.</h2>
+    <p class="eyebrow">TRY TWO SIGNAL COMPONENTS</p>
+    <h2>Help the data reach the first pixel.</h2>
     <p>
-      After the power experiment, there is another thing to investigate: the
-      colour instructions. This version adds two parts to help the signal reach
-      the first light reliably. Compare its data wire with the earlier diagrams.
+      This version adds a level shifter and a resistor to the data connection.
+      Follow the teal line in the diagram: the colour message takes a new path
+      from the Pico to the first pixel.
     </p>
     <div class="subjects board-anatomy">
       <article>
         <h3>Level shifter</h3>
         <p>
-          Raises the data signal from 3.3 V to about 5 V. It adds voltage
-          margin; it does not repair the wrong pulse timing.
+          Raises the data signal from 3.3 V to about 5 V, making a high pulse
+          easier for a 5 V pixel to recognise.
         </p>
       </article>
       <article>
         <h3>Data resistor</h3>
         <p>
-          A small resistor near the first pixel can soften signal spikes. It
-          does not turn 3.3 V into 5 V or fix a weak power supply.
+          Reduces sharp signal spikes. Put it close to the first pixel, where
+          the data wire enters the strip.
         </p>
       </article>
       <article>
         <h3>Power and connections</h3>
         <p>
-          The input capacitor helps with sudden power changes. Sound wiring,
-          common ground and a suitable supply still matter.
+          The separate supply powers the LEDs and level shifter. They share a
+          ground connection with the Pico so the signal voltages have the same
+          reference.
         </p>
       </article>
     </div>
@@ -695,7 +692,7 @@ const parts = [
     </div>
   </section>
   <section class="wrap section" aria-labelledby="parts-in-pictures">
-    <p class="eyebrow">A FEW OF THE SMALLER BITS</p>
+    <p class="eyebrow">RECOGNISE THE COMPONENTS</p>
     <h2 id="parts-in-pictures">What do the components look like?</h2>
     <div class="component-gallery">
       {parts.map((part) => (

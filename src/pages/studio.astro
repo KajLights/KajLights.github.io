@@ -3,7 +3,10 @@ import Site from "../layouts/Site.astro";
 import Workspace from "../studio/Workspace";
 ---
 
-<Site title="My devices">
+<Site
+  title="My devices"
+  description="Connect a KajLights device, give it a name, read its installed features and review firmware for your board."
+>
   <section class="wrap studio-wrap">
     <Workspace client:only="react">
       <p slot="fallback">Loading your device workspace…</p>

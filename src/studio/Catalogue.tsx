@@ -43,9 +43,7 @@ export default function Catalogue() {
           </button>
         </p>
       )}
-      {!catalogue && !error && (
-        <p role="status">Reading the verified release catalogue…</p>
-      )}
+      {!catalogue && !error && <p role="status">Loading firmware releases…</p>}
       {catalogue && (
         <>
           <div className="filters">
@@ -78,7 +76,7 @@ export default function Catalogue() {
                 checked={audio}
                 onChange={(e) => setAudio(e.target.checked)}
               />
-              UDP audio subscriptions
+              Receive sound measurements (UDP)
             </label>
             <label className="check">
               <input
@@ -102,9 +100,10 @@ export default function Catalogue() {
               <p className="eyebrow">NOTHING RELEASED YET</p>
               <h2>No published firmware yet.</h2>
               <p>
-                Release workflows are ready, but development builds and draft
-                releases are not offered here. You can still connect an existing
-                device to read its features and save a nickname.
+                There are no firmware downloads here yet. Setting up a new board
+                currently needs the developer build instructions linked from the
+                build guide. You can connect a board that already runs KajLights
+                to read its features and give it a name.
               </p>
               <div className="actions">
                 <a
@@ -119,8 +118,8 @@ export default function Catalogue() {
             <div className="empty">
               <h2>No matching releases.</h2>
               <p>
-                Try another board or feature selection. Unpublished combinations
-                are never substituted.
+                No published build matches these choices. Check the board model
+                and the features you selected.
               </p>
             </div>
           ) : (
@@ -131,15 +130,16 @@ export default function Catalogue() {
             </div>
           )}
           <p className="snapshot">
-            Catalogue verified{" "}
-            {new Date(catalogue.verified_at).toLocaleString()}. Only published
-            releases are imported; your browser does not query GitHub.
+            Catalogue last checked{" "}
+            {new Date(catalogue.verified_at).toLocaleString()}. Files are
+            supplied from the website’s checked copy of published releases.
           </p>
           <aside className="notice">
             <strong>About kaj-fi</strong>
             <p>
-              Public firmware distribution is not enabled yet. Existing kaj-fi
-              devices can use My devices for identity and nicknames.
+              kaj-fi firmware downloads are not available yet. If you already
+              have a running device, connect in My devices to read its details
+              or give it a name.
             </p>
           </aside>
         </>
