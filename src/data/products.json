@@ -1,0 +1,14 @@
+[
+  {
+    "id": "lightvm",
+    "name": "LightVM",
+    "description": "Explore computing through light, patterns and connected objects.",
+    "available": true
+  },
+  {
+    "id": "kaj-fi",
+    "name": "kaj-fi",
+    "description": "Explore signals and systems with a small audio analyser. Raw sound stays on the device.",
+    "available": false
+  }
+]

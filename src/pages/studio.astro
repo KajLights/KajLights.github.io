@@ -1,0 +1,16 @@
+---
+import Site from "../layouts/Site.astro";
+import Workspace from "../studio/Workspace";
+---
+
+<Site title="My devices">
+  <section class="wrap studio-wrap">
+    <Workspace client:only="react">
+      <p slot="fallback">Loading your device workspace…</p>
+    </Workspace>
+    <noscript>
+      This workspace needs JavaScript to connect directly to a device. The
+      public hardware and installation guides remain available.
+    </noscript>
+  </section>
+</Site>

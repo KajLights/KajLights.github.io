@@ -1,0 +1,77 @@
+---
+import "../styles/site.css";
+const {
+  title = "Play, make and connect",
+  description = "Explore computing logic, hardware signals and connected systems through light, sound and creativity.",
+} = Astro.props;
+const base = import.meta.env.BASE_URL;
+const links = [
+  ["", "Explore"],
+  ["hardware/", "Hardware"],
+  ["releases/", "Releases"],
+  ["install/", "Install"],
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#062f39" />
+    <title>{title} · KajLights</title>
+    <link rel="icon" href={`${base}assets/kajlights.png`} />
+  </head>
+  <body>
+    <a class="skip" href="#main">
+      Skip to content
+    </a>
+    <header class="site-header">
+      <a class="brand" href={base}>
+        <img
+          src={`${base}assets/kajlights.png`}
+          width="46"
+          height="46"
+          alt=""
+        />
+        <span>
+          KajLights<small>MAKE SOMETHING CLICK</small>
+        </span>
+      </a>
+      <nav aria-label="Main navigation">
+        {links.map(([path, label]) => (
+          <a
+            href={base + path}
+            aria-current={
+              Astro.url.pathname === base + path ? "page" : undefined
+            }
+          >
+            {label}
+          </a>
+        ))}
+        <a class="button dark small" href={`${base}studio/#/devices`}>
+          My devices <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div>
+        <strong>KajLights</strong>
+        <p>Computing made tangible. Room to play.</p>
+      </div>
+      <div>
+        <a href={`${base}about/`}>About the project</a>
+        <a href="https://github.com/KajLights">Source & contributions ↗</a>
+        <a href={`${base}notices/device-core.txt`}>Shared client licence</a>
+        <a href={`${base}notices/browser-dependencies.txt`}>
+          Browser dependency notices
+        </a>
+      </div>
+      <p class="muted">Experimental projects, built in the open.</p>
+    </footer>
+  </body>
+</html>

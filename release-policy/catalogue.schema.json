@@ -1,0 +1,188 @@
+{
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "kajlights.catalogue"
+    },
+    "format": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "verified_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation_revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "lock": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^distribution/[A-Za-z0-9_./-]+$",
+          "not": {
+            "pattern": "\\.\\."
+          }
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": ["path", "sha256"],
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object"
+      }
+    },
+    "tool_contracts": {
+      "type": "array",
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "maxItems": 1024,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "repository": {
+            "type": "string",
+            "minLength": 1
+          },
+          "release": {
+            "type": "object",
+            "properties": {
+              "tag": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              },
+              "channel": {
+                "enum": ["stable", "prerelease"]
+              },
+              "source_revision": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              }
+            },
+            "required": ["tag", "version", "channel", "source_revision"],
+            "additionalProperties": false
+          },
+          "release_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "published_at": {
+            "type": "string",
+            "minLength": 1
+          },
+          "release_url": {
+            "type": "string",
+            "pattern": "^https://github.com/KajLights/"
+          },
+          "manifest": {
+            "type": "string",
+            "pattern": "^distribution/[A-Za-z0-9_./-]+$",
+            "not": {
+              "pattern": "\\.\\."
+            }
+          },
+          "manifest_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "artifact": {
+            "$ref": "urn:kajlights:firmware"
+          },
+          "assets": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^distribution/[A-Za-z0-9_./-]+$",
+              "not": {
+                "pattern": "\\.\\."
+              }
+            }
+          },
+          "policy": {
+            "type": "object",
+            "properties": {
+              "withdrawn": {
+                "type": "boolean"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "recommended": {
+                "type": "boolean"
+              },
+              "accepted_methods": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "enum": ["usb-serial", "uf2"]
+                }
+              }
+            },
+            "required": [
+              "withdrawn",
+              "reason",
+              "recommended",
+              "accepted_methods"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "repository",
+          "release",
+          "release_id",
+          "published_at",
+          "release_url",
+          "manifest",
+          "manifest_sha256",
+          "artifact",
+          "assets",
+          "policy"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "format",
+    "id",
+    "verified_at",
+    "implementation_revision",
+    "lock",
+    "sources",
+    "tool_contracts",
+    "candidates"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:kajlights:catalogue"
+}

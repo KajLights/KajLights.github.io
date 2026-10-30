@@ -1,0 +1,22 @@
+{
+  "schema": "kajlights.release_policy",
+  "format": 1,
+  "max_distribution_bytes": 805306368,
+  "sources": [
+    {
+      "repository": "KajLights/lightvm",
+      "product": "lightvm",
+      "enabled": true
+    },
+    {
+      "repository": "KajLights/kaj-fi",
+      "product": "kaj-fi",
+      "enabled": false,
+      "reason": "Public firmware distribution has not been approved for this project."
+    }
+  ],
+  "recommendations": [],
+  "withdrawals": [],
+  "installation_acceptances": [],
+  "tool_contracts": []
+}
