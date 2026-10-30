@@ -1,0 +1,13 @@
+node_modules/
+.deps/
+dist/
+build/
+.astro/
+public/distribution/
+public/catalogue.json
+playwright-report/
+test-results/
+__pycache__/
+*.pyc
+.DS_Store
+public/notices/

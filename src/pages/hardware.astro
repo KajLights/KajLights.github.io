@@ -1,0 +1,58 @@
+---
+import Site from "../layouts/Site.astro";
+import boards from "../data/boards.json";
+const base = import.meta.env.BASE_URL;
+---
+
+<Site title="Hardware">
+  <section class="wrap page-intro">
+    <p class="eyebrow">KNOW WHAT IS IN YOUR HAND</p>
+    <h1>
+      Small boards.
+      <br />
+      Different possibilities.
+    </h1>
+    <p class="intro">A processor name is not a board model.</p>
+    <p>
+      Use the printed model to identify your board. Flash sizes below describe
+      the standard board configuration; the ESP installer measures physical
+      flash before writing.
+    </p>
+  </section>
+  <section class="wrap board-grid">
+    {boards.map((board) => (
+      <article class="board-card" id={board.id}>
+        <span class="board-art" aria-hidden="true">
+          <i></i>
+          <b>{board.id.startsWith("pico") ? "RP" : "X"}</b>
+          <i></i>
+        </span>
+        <p class="eyebrow">
+          {board.chip} · {board.flash_bytes / 1048576} MiB NOMINAL FLASH
+        </p>
+        <h2>{board.name}</h2>
+        <p>{board.hint}</p>
+        <p class="muted">
+          {board.method === "uf2"
+            ? `Hold BOOTSEL while connecting. Copy the selected UF2 to the ${board.drive} drive.`
+            : "Choose its USB port in the workspace. Chip, revision and flash must match before installation."}
+        </p>
+        <a
+          class="text-link"
+          href={`${base}studio/#/firmware?board=${board.id}`}
+        >
+          Find firmware →
+        </a>
+      </article>
+    ))}
+  </section>
+  <section class="wrap section narrow prose">
+    <h2>Working with sound</h2>
+    <p>
+      kaj-fi is a separate analyser project for the XIAO ESP32-S3 Sense
+      microphone and synthetic test signals. Existing devices can use the shared
+      workspace for identity and nicknames. Public firmware distribution has not
+      yet been enabled.
+    </p>
+  </section>
+</Site>

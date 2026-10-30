@@ -1,0 +1,65 @@
+[
+  {
+    "id": "pico",
+    "name": "Raspberry Pi Pico",
+    "chip": "RP2040",
+    "flash_bytes": 2097152,
+    "method": "uf2",
+    "drive": "RPI-RP2",
+    "variant": null,
+    "product": "lightvm",
+    "hint": "Check the printed name: Pico and Pico W share the same bootloader."
+  },
+  {
+    "id": "pico_w",
+    "name": "Raspberry Pi Pico W",
+    "chip": "RP2040",
+    "flash_bytes": 2097152,
+    "method": "uf2",
+    "drive": "RPI-RP2",
+    "variant": null,
+    "product": "lightvm",
+    "hint": "Choose Pico W only for a board labelled Pico W."
+  },
+  {
+    "id": "pico2_w",
+    "name": "Raspberry Pi Pico 2 W",
+    "chip": "RP2350",
+    "flash_bytes": 4194304,
+    "method": "uf2",
+    "drive": "RP2350",
+    "variant": null,
+    "product": "lightvm",
+    "hint": "Pico 2 W needs its own RP2350 firmware."
+  },
+  {
+    "id": "xiao_esp32c3",
+    "name": "Seeed XIAO ESP32-C3",
+    "chip": "ESP32-C3",
+    "flash_bytes": 4194304,
+    "method": "usb-serial",
+    "variant": null,
+    "product": "lightvm",
+    "hint": "Confirm XIAO ESP32-C3 on the board before selecting its USB port."
+  },
+  {
+    "id": "xiao_esp32s3",
+    "name": "Seeed XIAO ESP32-S3",
+    "chip": "ESP32-S3",
+    "flash_bytes": 8388608,
+    "method": "usb-serial",
+    "variant": null,
+    "product": "lightvm",
+    "hint": "A Sense board can run lighting firmware; the lighting build does not use its microphone."
+  },
+  {
+    "id": "xiao_esp32c6",
+    "name": "Seeed XIAO ESP32-C6",
+    "chip": "ESP32-C6",
+    "flash_bytes": 4194304,
+    "method": "usb-serial",
+    "variant": null,
+    "product": "lightvm",
+    "hint": "Confirm XIAO ESP32-C6 on the board before selecting its USB port."
+  }
+]

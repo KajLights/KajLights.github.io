@@ -1,0 +1,21 @@
+---
+import Site from "../layouts/Site.astro";
+import Catalogue from "../studio/Catalogue";
+---
+
+<Site title="Firmware releases">
+  <section class="wrap page-intro">
+    <p class="eyebrow">CHOOSE WHAT YOUR DEVICE CAN DO</p>
+    <h1>Firmware releases</h1>
+    <p class="intro">
+      Published builds, clear features, and a version you can recognise.
+    </p>
+    <p>
+      Recommendations are specific to a board and profile. You can review older
+      milestones deliberately; a newer build is never installed automatically.
+    </p>
+  </section>
+  <section class="wrap section compact">
+    <Catalogue client:load />
+  </section>
+</Site>

@@ -1,0 +1,159 @@
+---
+import Site from "../layouts/Site.astro";
+const base = import.meta.env.BASE_URL;
+const pattern = [
+  0, 0, 1, 1, 0, 0, 0, 1, 2, 2, 1, 0, 1, 2, 3, 3, 2, 1, 1, 2, 3, 3, 2, 1, 0, 1,
+  2, 2, 1, 0, 0, 0, 1, 1, 0, 0,
+];
+---
+
+<Site>
+  <section class="hero wrap">
+    <div>
+      <p class="eyebrow">
+        <span class="live-dot"></span> LOGIC · SIGNALS · CONNECTIONS
+      </p>
+      <h1>
+        Small lights.
+        <br />
+        <em>Big ideas.</em>
+      </h1>
+      <p class="intro">
+        Make a pattern. Follow a message. Change a rule and see what happens.
+      </p>
+      <p>
+        Explore computing through light, sound and connected objects. Start with
+        curiosity; bring a board when you’re ready.
+      </p>
+      <div class="actions">
+        <a class="button dark" href={`${base}studio/#/devices`}>
+          Open your devices <span aria-hidden="true">↗</span>
+        </a>
+        <a class="text-link" href="https://kajlights.github.io/lightvm/">
+          Try the lighting playground ↗
+        </a>
+      </div>
+    </div>
+    <figure class="light-study">
+      <div class="study-label">
+        <span>01 / A LITTLE SYSTEM</span>
+        <span>INPUT → RULE → LIGHT</span>
+      </div>
+      <div
+        class="led-grid"
+        role="img"
+        aria-label="A repeating light pattern on a six by six LED grid"
+      >
+        {pattern.map((n, i) => (
+          <span class={`led level-${n}`} style={`--i:${i}`}></span>
+        ))}
+      </div>
+      <figcaption>
+        A simple rule can make a surprising pattern.
+        <br />
+        The interesting part is finding out why.
+      </figcaption>
+    </figure>
+  </section>
+  <section class="wrap section">
+    <div class="section-heading">
+      <p class="eyebrow">ROOM TO PLAY AND MAKE</p>
+      <h2>
+        Something to make.
+        <br />
+        Something to figure out.
+      </h2>
+    </div>
+    <div class="subjects">
+      <article>
+        <span class="number">01</span>
+        <h3>Computing logic</h3>
+        <p>
+          Patterns, choices, repetition and state. Change the instructions and
+          follow the result.
+        </p>
+        <a class="text-link" href="https://kajlights.github.io/lightvm/">
+          Open the light editor ↗
+        </a>
+      </article>
+      <article>
+        <span class="number">02</span>
+        <h3>Hardware & signals</h3>
+        <p>
+          See how a small board meets the physical world through pins, timing,
+          light and sound.
+        </p>
+        <a class="text-link" href={`${base}hardware/`}>
+          Meet the boards →
+        </a>
+      </article>
+      <article>
+        <span class="number">03</span>
+        <h3>Connected systems</h3>
+        <p>
+          Give a device a name, discover what it can do, and investigate the
+          messages between things.
+        </p>
+        <a class="text-link" href={`${base}studio/#/devices`}>
+          Connect a device →
+        </a>
+      </article>
+    </div>
+  </section>
+  <section class="setup-band">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">WHEN YOU HAVE A BOARD</p>
+        <h2>
+          A home for
+          <br />
+          your little systems.
+        </h2>
+        <p>
+          Name your devices, inspect their features, and choose firmware made
+          for their exact hardware.
+        </p>
+      </div>
+      <ol class="journey">
+        <li>
+          <span>1</span>
+          <div>
+            <h3>Identify</h3>
+            <p>
+              Read the model printed on the board, or connect an existing
+              KajLights device.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>2</span>
+          <div>
+            <h3>Choose</h3>
+            <p>
+              Compare published versions, profiles and features. See what an
+              installation will change.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span>3</span>
+          <div>
+            <h3>Verify</h3>
+            <p>
+              Check the payload before writing, then reconnect to confirm the
+              running build.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <div class="wrap actions">
+      <a class="button dark" href={`${base}install/`}>
+        Set up a device →
+      </a>
+      <a class="text-link" href={`${base}releases/`}>
+        Browse released firmware →
+      </a>
+    </div>
+  </section>
+</Site>

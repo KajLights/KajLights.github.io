@@ -1,0 +1,72 @@
+---
+import Site from "../layouts/Site.astro";
+const base = import.meta.env.BASE_URL;
+---
+
+<Site title="Set up a device">
+  <section class="wrap page-intro narrow">
+    <p class="eyebrow">FROM BOARD TO SOMETHING YOU MADE</p>
+    <h1>Set up a device</h1>
+    <p class="intro">Start with the exact model in your hand.</p>
+    <p>
+      The workspace shows published firmware for that board, the features it
+      includes, and the consequences of installing it.
+    </p>
+    <div class="actions">
+      <a class="button dark" href={`${base}studio/#/firmware`}>
+        Choose firmware →
+      </a>
+      <a class="text-link" href={`${base}studio/#/devices`}>
+        Connect an existing device →
+      </a>
+    </div>
+  </section>
+  <section class="wrap section narrow prose">
+    <h2>For a new or unbootable board</h2>
+    <ol>
+      <li>
+        Read the physical model printed on the board. Pico and Pico W share a
+        bootloader, so USB alone cannot distinguish them.
+      </li>
+      <li>
+        Choose that model and a published build. ESP boards get a chip, flash
+        and identity check over USB. Pico boards use a verified UF2 download for
+        the selected model.
+      </li>
+      <li>
+        Save anything you need before installing. Current release contracts
+        require a clean installation and do not promise to retain programs,
+        settings or nicknames.
+      </li>
+      <li>
+        Reconnect after installation. The workspace compares the device identity
+        and running build with your selection.
+      </li>
+    </ol>
+    <h2>For an existing device</h2>
+    <p>
+      Connect in <strong>My devices</strong> first to read its identity,
+      nickname, version and compiled features. The firmware view will show
+      feature additions and removals, and label a deliberate downgrade.
+    </p>
+    <p>
+      A settings export contains the nickname and available configuration. It
+      does not recover editable program source or every stored object. Keep your
+      source files separately.
+    </p>
+    <h2>Browser and connection support</h2>
+    <p>
+      Direct ESP installation needs Web Serial on HTTPS or localhost, usually
+      desktop Chrome or Edge. UF2 download works without a browser hardware API.
+      Local network access may need a browser permission; the website never
+      connects to your LAN through a remote server.
+    </p>
+    <p>
+      OTA is not implemented. Installation support is enabled per released build
+      and method after acceptance evidence is recorded.
+    </p>
+    <a class="text-link" href={`${base}hardware/`}>
+      Check the board guide →
+    </a>
+  </section>
+</Site>
