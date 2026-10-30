@@ -48,13 +48,21 @@ test("public pages and honest empty catalogue work on desktop and mobile", async
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
-  for (const route of ["hardware/", "install/", "about/"]) {
+  for (const route of [
+    "learn/",
+    "build/",
+    "hardware/",
+    "install/",
+    "about/",
+    "image-credits/",
+  ]) {
     await page.goto(route);
     await expect(page.locator("main h1")).toBeVisible();
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
+      `${route} fits the mobile viewport`,
     ).toBe(true);
   }
 });
