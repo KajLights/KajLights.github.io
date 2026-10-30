@@ -12,14 +12,62 @@ const base = import.meta.env.BASE_URL;
       <br />
       Different possibilities.
     </h1>
-    <p class="intro">A processor name is not a board model.</p>
+    <p class="intro">The small computer at the heart of your project.</p>
+    <p>
+      A microcontroller board runs a program and talks to lights or sensors
+      through its connection pins. Add LEDs, wiring, power and LightVM firmware
+      to turn it into a lighting controller. These are standard development
+      boards you can buy separately, rather than a special KajLights kit.
+    </p>
+  </section>
+  <section class="wrap section narrow prose" id="find-a-board">
+    <h2>Where do I find one?</h2>
+    <p>
+      For a first lighting project, the <strong>Raspberry Pi Pico 2 W</strong>{" "}
+      is the example used in our{" "}
+      <a href={`${base}build/`}>parts and build guide</a>. Start at{" "}
+      <a href="https://www.raspberrypi.com/products/raspberry-pi-pico-2/">
+        Raspberry Pi’s product page and retailer finder
+      </a>
+      , select <strong>Pico 2 W</strong>, and choose your country. Look for a
+      version with headers already soldered on if you want to use jumper wires.
+      A Pico is a microcontroller board, not a Raspberry Pi desktop computer;
+      this project does not need an SD card, keyboard or monitor for the board.
+    </p>
+    <p>
+      Already have a board? Compare the printed name with the models below. For
+      the smaller XIAO boards, use Seeed’s official model guides:{" "}
+      <a href="https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/">
+        ESP32-C3
+      </a>
+      ,{" "}
+      <a href="https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/">
+        ESP32-S3
+      </a>{" "}
+      and{" "}
+      <a href="https://wiki.seeedstudio.com/xiao_esp32c6_getting_started/">
+        ESP32-C6
+      </a>
+      . Those guides include pin diagrams and purchase links. A generic “ESP32”
+      listing is not enough to identify a compatible board.
+    </p>
+    <p>
+      <strong>Before buying:</strong> check the{" "}
+      <a href={`${base}releases/`}>release catalogue</a> for your exact model.
+      These are development targets; a listing here does not mean a tested
+      public installer is available. During early testing, setting up hardware
+      may require building firmware from source. You can try the{" "}
+      <a href="https://kajlights.github.io/lightvm/">browser playground</a>{" "}
+      without buying anything.
+    </p>
+    <h2>Identify your model</h2>
     <p>
       Use the printed model to identify your board. Flash sizes below describe
       the standard board configuration; the ESP installer measures physical
       flash before writing.
     </p>
   </section>
-  <section class="wrap board-grid">
+  <section class="wrap board-grid" aria-label="Board models">
     {boards.map((board) => (
       <article class="board-card" id={board.id}>
         <span class="board-art" aria-hidden="true">
