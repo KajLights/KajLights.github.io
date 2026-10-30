@@ -67,8 +67,12 @@ const componentsSource = "https://github.com/raspberrypilearning/components";
     </p>
     <h2>Wiring diagrams</h2>
     <p>
-      The quick and upgraded connection diagrams are drawn for KajLights, using
-      the Pico pin documentation and{" "}
+      The USB, separate-power and signal-upgrade diagrams are drawn for
+      KajLights, using the
+      <a href="https://datasheets.raspberrypi.com/picow/pico-2-w-datasheet.pdf">
+        Pico 2 W datasheet
+      </a>
+      and{" "}
       <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/best-practices">
         Adafruit’s NeoPixel wiring guidance
       </a>{" "}
@@ -77,9 +81,10 @@ const componentsSource = "https://github.com/raspberrypilearning/components";
         discussion of direct drive
       </a>{" "}
       as technical references. They show functional connections, not physical
-      breadboard layouts. The quick route reflects Kaj’s experience driving
-      strips directly from Picos; the later circuit adds a data resistor and
-      level shifter.
+      breadboard layouts. The quick route reflects Kaj’s experience powering
+      strips through Pico USB VBUS and driving data directly. Later circuits
+      introduce a separate supply and capacitor, then a data resistor and level
+      shifter.
     </p>
   </section>
 </Site>
