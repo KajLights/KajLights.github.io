@@ -4,118 +4,124 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <Site
-  title="About KajLights"
-  description="Why learn electronics, computing and communications through microcontrollers? Understand how things work so you can imagine, ask for and make more."
+  title="About the project"
+  description="KajLights helps people learn electronics, computing and networking by making things with microcontrollers. Understanding how things work gives you more ideas for what to build."
 >
   <section class="wrap page-intro narrow">
-    <p class="eyebrow">PLAY · INVESTIGATE · MAKE</p>
+    <p class="eyebrow">WHY KAJLIGHTS EXISTS</p>
     <h1>
       Understand more.
       <br />
       Imagine more.
     </h1>
     <p class="intro">
-      KajLights is a practical way into electronics, computing and networking
-      through microcontrollers, light and sound.
+      KajLights helps people learn electronics, computing and networking by
+      making things with microcontrollers.
     </p>
     <p>
-      A small board can connect an idea to something you can see, hear or
-      measure. Making it work brings together a circuit, a program and signals
-      between components or devices. Our aim is to help people understand those
-      relationships and use them to make things of their own.
+      Start with something you can see: a light changes colour, a pattern moves,
+      or a message switches an animation. Follow what made it happen. There is a
+      circuit supplying power, a computer running instructions and a signal
+      carrying information. Learning how these parts work together gives you
+      ideas for projects of your own.
     </p>
   </section>
   <section class="wrap section narrow prose">
-    <h2>Learn through the whole system</h2>
+    <h2>One project, several things to discover</h2>
     <p>
-      Coding is part of the picture. So are power and current, the role of a
-      processor, how information is represented, and the rules that let devices
-      communicate. A light pattern makes these ideas tangible: you can enjoy it,
-      change it, investigate it and explain it.
+      Suppose you want a light outside your door to show whether you are busy.
+      First, connect the lights and choose a colour. Then make a pattern that
+      someone else can recognise. Later, explore how to change it from another
+      device. Along the way you meet electrical connections, instructions,
+      memory and messages, each with a job in something you are making.
     </p>
     <p>
-      Play, investigation and making are equally valid ways in. You can start
-      with the browser preview, follow a guided lesson, trace a circuit or work
-      towards a project you have imagined. The{" "}
-      <a href={`${base}learn/`}>learning path</a> connects electronics,
-      computing and communications without requiring a single order or a
-      particular programming language.
+      Coding is one part of this. Recognising a component, tracing a wire,
+      working out where a program runs and finding why a message did not arrive
+      are part of understanding a computer system too.
     </p>
-    <h2 id="why-understanding">
-      Why understanding matters in an AI-ready world
-    </h2>
-    <p>
-      When you can ask an AI assistant to help build something, knowing what is
-      possible becomes especially useful. Understanding sensors, computation and
-      communications gives you ideas to combine, constraints to describe and
-      questions to ask. It also helps you test whether the result does what you
-      intended.
-    </p>
+    <h2 id="why-understanding">Understanding gives you more to ask for</h2>
     <blockquote class="learning-prompt">
       If you can’t imagine it, you can’t ask for it to be built.
     </blockquote>
     <p>
-      The ambition is to give imagination more material to work with. Learn
-      enough to notice a possibility, describe it clearly, try a small version
-      and judge the evidence. Those habits matter whether you make something by
-      hand, work with another person or use AI. No AI service or account is
-      required to take part in KajLights.
+      AI can help turn an idea into a program or a design. Experience with the
+      parts gives you more ideas to bring to it. Once you know a board can keep
+      time, control individual lights and receive messages, you can imagine a
+      countdown, a game or a display that responds to another device.
+    </p>
+    <p>
+      That understanding also makes a request clearer. “Make something with
+      lights” can become “Make a countdown that turns one light off each second,
+      then flashes when time is up.” You can say what should happen, try it, and
+      check whether the result matches your idea. These skills help whether you
+      build by yourself, with other people or with AI.
+    </p>
+    <h2>Make something, then follow your curiosity</h2>
+    <p>
+      The first build is intended to be achievable for a child of about ten with
+      an adult helping prepare the board and check the wiring. Get a light
+      working, change it, and find out why it changed. More detailed
+      explanations are there when a question or the next project calls for them.
+    </p>
+    <p>
+      You can also start with the browser lessons, investigate an unexpected
+      result or adapt an example. The{" "}
+      <a href={`${base}learn/`}>learning page</a> offers starting points in
+      electronics, computing and communications. The twelve programming lessons
+      are available now; the hardware and networking activities are an early
+      collection we want to develop further.
     </p>
     <h2>A shared aim with Found in Space</h2>
     <p>
-      <a href="https://foundin.space/about/">Found in Space</a> approaches the
-      same ambition through scientific data and models: explore an experience,
-      question the evidence behind it and build with its materials. KajLights
-      approaches it through circuits, microcontrollers and connected systems.
-      Both aim to help people understand what they can ask, imagine what they
-      could make and assess what an answer or a working example really shows.
+      <a href="https://foundin.space/">Found in Space</a> lets people explore
+      scientific data and models, understand what they show, and use them to
+      make something new. KajLights takes the same approach to circuits and
+      computers: give people something to explore, a way to understand it and
+      materials they can build with.
     </p>
-    <h2>What is available now?</h2>
+    <h2>The projects behind the lights</h2>
     <p>
-      <strong>LightVM</strong> runs lighting programs on supported boards and in
-      the browser preview. Its editor offers Python, JavaScript, visual blocks
-      and twelve beginner lessons. This site adds hardware guidance, an early
-      learning path and tools for managing devices and available firmware.
-    </p>
-    <p>
-      <strong>kaj-fi</strong> explores sound analysis and sharing derived audio
-      features between devices while keeping raw sound on the analyser. Its
-      public firmware distribution is not yet enabled. Networking and audio
-      capabilities depend on the board and firmware features in use.
-    </p>
-    <h2>Early testing, with room to improve</h2>
-    <p>
-      These are experimental projects. Expect bugs, missing features and gaps in
-      the instructions. Changes can require wiping and setting up a board again.
-      A supported development board is not a promise of a tested public
-      installer; check the <a href={`${base}releases/`}>release catalogue</a>{" "}
-      before planning hardware setup.
+      <a href="https://github.com/KajLights/lightvm">LightVM</a> runs lighting
+      programs on microcontrollers and in a browser preview. Its editor offers
+      Python, JavaScript and visual blocks. This website provides the build
+      guide, learning activities and tools for connecting and setting up
+      devices.
     </p>
     <p>
-      Our learning aims and investigation prompts are ambitions to test and
-      improve, not claims of evaluated learning outcomes. Teachers and learners
-      can help by sharing where an explanation or activity needs more work.
+      The companion <strong>kaj-fi</strong> project analyses sound and sends
+      measurements, such as sound level, to other devices. This makes it
+      possible to explore lights that respond to sound. kaj-fi is still in
+      development; its public firmware downloads are not available yet.
     </p>
-    <h2>Your browser, your devices</h2>
+    <h2>Early testing</h2>
     <p>
-      Device connections run directly in your browser. No KajLights account or
-      cloud device database is required. Remembered labels stay in this browser;
-      nicknames you explicitly save are written to the device. Firmware assets
-      come from the website’s verified release mirror.
+      KajLights is an experimental project. Expect bugs, unfinished features and
+      instructions that need improving. Some changes require setting up a board
+      again. Check the <a href={`${base}releases/`}>firmware catalogue</a>{" "}
+      before buying hardware: a board we develop for may not yet have an
+      installer ready to use.
     </p>
-    <h2>Help make the workshop</h2>
     <p>
-      Bring a question, a correction, a project or an explanation that helped
-      something click.{" "}
+      The activities have not yet been evaluated in classrooms. Feedback from
+      learners, parents and teachers will help us improve both the explanations
+      and the projects.
+    </p>
+    <h2>Made by Kaj, open to others</h2>
+    <p>
+      KajLights is built by Kaj Siebert. The source code and examples are
+      available through <a href="https://github.com/KajLights">GitHub</a>. You
+      can use the browser tools without a KajLights account. Connections to your
+      board go directly from your browser; the list of remembered devices stays
+      in that browser.
+    </p>
+    <p>
+      A clearer explanation, a useful picture or an experiment is a welcome
+      contribution.{" "}
       <a href="https://github.com/KajLights/KajLights.github.io/issues">
-        Share feedback on the website and guides
+        Tell us what you tried and what could be better
       </a>
-      , or{" "}
-      <a href="https://github.com/KajLights">
-        explore the implementation projects
-      </a>
-      . Useful contributions include clearer pictures and experiments as well as
-      code.
+      .
     </p>
   </section>
 </Site>

@@ -558,8 +558,9 @@ export default function Workspace() {
           <section className="panel">
             <h2>Connect a device</h2>
             <p>
-              Use a USB data cable, or enter its address on your local network.
-              Browser permissions apply to the device you choose.
+              Connect a board already running KajLights with a USB data cable,
+              or enter its local network address. To prepare a new board, start
+              with the installation guide.
             </p>
             <div className="actions">
               <button
@@ -608,8 +609,8 @@ export default function Workspace() {
                 <section className="panel">
                   <h2>Device nickname</h2>
                   <p>
-                    Give this device a name you will recognise. Its hardware ID
-                    continues to identify it, even when names are shared.
+                    Use a name such as “Desk lights”. It is saved on the board,
+                    so you can read it again from another computer.
                   </p>
                   <div className="settings-name">
                     <label className="field">
@@ -674,7 +675,7 @@ export default function Workspace() {
                       </dd>
                     </div>
                     <div>
-                      <dt>VM memory</dt>
+                      <dt>Memory for running animations</dt>
                       <dd>{bytesLabel(description.limits.vm_heap_bytes)}</dd>
                     </div>
                     <div>
@@ -760,7 +761,7 @@ export default function Workspace() {
                 </h2>
                 <p>
                   {description
-                    ? "Firmware choices are bound to the hardware ID above."
+                    ? "Firmware choices below are for the connected device shown above."
                     : "Choose the exact board model printed on the hardware."}
                 </p>
                 <div className="actions">
@@ -866,9 +867,10 @@ export default function Workspace() {
                   <span className="stage-number">2</span>Choose a released build
                 </h2>
                 <p>
-                  Standard firmware keeps optional integrations out. Compare
-                  each build’s actual storage and features before changing
-                  profiles.
+                  Choose the features your project needs. MQTT connects lights
+                  to Home Assistant; UDP audio receives sound measurements from
+                  an analyser. Compare the included features and available
+                  storage.
                 </p>
                 <div className="filters">
                   <label className="check">
@@ -909,7 +911,7 @@ export default function Workspace() {
                         })
                       }
                     />
-                    Require UDP audio subscriptions
+                    Require sound measurements (UDP)
                   </label>
                   <label className="check">
                     <input
@@ -941,9 +943,9 @@ export default function Workspace() {
                   <div className="empty">
                     <h3>No published firmware yet.</h3>
                     <p>
-                      Development artifacts and draft releases are not install
-                      candidates. Connect an existing device to use its identity
-                      and nickname tools.
+                      There are no firmware downloads here yet. The installation
+                      guide links to developer setup instructions. You can still
+                      connect a board that already runs KajLights.
                     </p>
                   </div>
                 ) : !board ? (

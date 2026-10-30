@@ -3,19 +3,20 @@ import Site from "../layouts/Site.astro";
 import Catalogue from "../studio/Catalogue";
 ---
 
-<Site title="Firmware releases">
+<Site
+  title="Firmware releases"
+  description="Find published LightVM firmware for your board and compare its lighting, network and audio features."
+>
   <section class="wrap page-intro">
     <p class="eyebrow">CHOOSE WHAT YOUR DEVICE CAN DO</p>
     <h1>Firmware releases</h1>
-    <p class="intro">
-      Firmware is the software that runs on your board. Choose what it can do.
-    </p>
+    <p class="intro">Find the software your board needs to run LightVM.</p>
     <p>
-      Each build is made for an exact board and a set of features, such as
-      networking or audio. Recommendations are specific to a board and profile.
-      A profile is a particular combination of those build options. You can
-      review older milestones deliberately; a newer build is never installed
-      automatically.
+      Choose your board, then the features your project needs. For example, MQTT
+      connects lights to Home Assistant; audio subscriptions let a board receive
+      sound measurements from an analyser. Each build includes a particular set
+      of features, called a profile. You can review the details before deciding
+      what to install.
     </p>
   </section>
   <section class="wrap section compact">

@@ -6,22 +6,19 @@ import BoardPhoto from "../components/BoardPhoto.astro";
 const base = import.meta.env.BASE_URL;
 ---
 
-<Site title="Hardware">
+<Site
+  title="Choose a microcontroller board"
+  description="Recognise the Pico and XIAO boards, find the right model and check firmware availability before starting your lighting project."
+>
   <section class="wrap page-intro">
-    <p class="eyebrow">KNOW WHAT IS IN YOUR HAND</p>
-    <h1>
-      Small boards.
-      <br />
-      Different possibilities.
-    </h1>
+    <p class="eyebrow">THE COMPUTER IN YOUR PROJECT</p>
+    <h1>Choose your board.</h1>
     <p class="intro">The small computer at the heart of your project.</p>
     <p>
-      A microcontroller board runs a program and talks to lights or sensors
-      through its connection pins. Add LEDs, wiring, power and LightVM firmware
-      to turn it into a lighting controller. These are standard development
-      boards you can buy separately. They bring electronics, computation and
-      communication into the same small system: power the circuit, run a rule
-      and send a signal to something in the world.
+      A microcontroller has a processor to run instructions and memory to hold
+      programs and values. A development board adds a USB socket and pins so you
+      can connect it to other parts. With LightVM installed, it can run a
+      lighting pattern on its own while receiving commands from your computer.
     </p>
   </section>
   <section class="wrap section narrow prose" id="find-a-board">
@@ -52,23 +49,23 @@ const base = import.meta.env.BASE_URL;
       <a href="https://wiki.seeedstudio.com/xiao_esp32c6_getting_started/">
         ESP32-C6
       </a>
-      . Those guides include pin diagrams and purchase links. A generic “ESP32”
-      listing is not enough to identify a compatible board.
+      . Those guides include pin diagrams and purchase links. Check the full
+      model name: these ESP32 boards use different firmware.
     </p>
     <p>
       <strong>Before buying:</strong> check the{" "}
       <a href={`${base}releases/`}>release catalogue</a> for your exact model.
-      These are development targets; a listing here does not mean a tested
-      public installer is available. During early testing, setting up hardware
-      may require building firmware from source. You can try the{" "}
+      We develop for the boards below, but some may not yet have an installer
+      ready to use. Without one, setup requires building the firmware with
+      developer tools. You can try the{" "}
       <a href="https://kajlights.github.io/lightvm/">browser playground</a>{" "}
       without buying anything.
     </p>
     <h2>Identify your model</h2>
     <p>
-      Use the printed model to identify your board. Flash sizes below describe
-      the standard board configuration; the ESP installer measures physical
-      flash before writing.
+      Use the printed model to identify your board. Flash memory stores software
+      and saved work when power is off. The sizes below are the standard sizes
+      for these models.
     </p>
   </section>
   <section class="wrap board-grid" aria-label="Board models">
@@ -76,7 +73,7 @@ const base = import.meta.env.BASE_URL;
       <article class="board-card" id={board.id}>
         <BoardPhoto id={board.id as keyof typeof photos} name={board.name} />
         <p class="eyebrow">
-          {board.chip} · {board.flash_bytes / 1048576} MiB NOMINAL FLASH
+          {board.chip} · {board.flash_bytes / 1048576} MiB FLASH STORAGE
         </p>
         <h2>{board.name}</h2>
         <p>{photos[board.id as keyof typeof photos].note}</p>
@@ -102,21 +99,21 @@ const base = import.meta.env.BASE_URL;
     </p>
   </div>
   <section class="wrap section narrow prose">
-    <h2>Hardware capability and software support</h2>
+    <h2>What can your board do?</h2>
     <p>
-      A board may contain a radio or microphone without the installed firmware
-      using it. Check the device’s reported features as well as its model. Our{" "}
-      <a href={`${base}learn/`}>learning path</a> explains how circuits,
-      programs and communications fit together; the{" "}
-      <a href={`${base}build/#connections`}>starter wiring diagram</a> shows one
-      concrete setup.
+      A Pico 2 W contains a Wi-Fi radio. To control it over the network, its
+      firmware also needs Wi-Fi and network-control features enabled. The
+      original Pico has no radio and uses USB. Connect in{" "}
+      <a href={`${base}studio/#/devices`}>My devices</a> to read the features
+      installed on your board, then try the{" "}
+      <a href={`${base}learn/#communications`}>communications activity</a>.
     </p>
     <h2>Working with sound</h2>
     <p>
-      kaj-fi is a separate analyser project for the XIAO ESP32-S3 Sense
-      microphone and synthetic test signals. Existing devices can use the shared
-      workspace for identity and nicknames. Public firmware distribution has not
-      yet been enabled.
+      The XIAO ESP32-S3 Sense adds a microphone. The companion kaj-fi project
+      uses it to measure sound and send those measurements to other devices, for
+      experiments such as lights that respond to sound level. Public kaj-fi
+      firmware downloads are not available yet.
     </p>
   </section>
 </Site>

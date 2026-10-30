@@ -1,7 +1,14 @@
 # KajLights website
 
-The main website owns the project introduction, learning routes, illustrated build
-guide, release catalogue and device/installer workspace. LightVM and kaj-fi own
+KajLights helps people learn electronics, computing and networking by making
+things with microcontrollers. Understanding how the parts work together helps
+people imagine projects, describe what they want to build and assess the result,
+including when working with AI. See the
+[project goals](https://github.com/KajLights/lightvm/blob/main/docs/project-goals.md)
+and the [content principles and review](content-review.md).
+
+The main website owns the project introduction, learning activities, illustrated
+build guide, release catalogue and device/installer workspace. LightVM and kaj-fi own
 their implementations and release artifacts.
 This Astro site is the catalogue/maintenance stage; moving the complete lighting
 editor and lessons here is a separate stage.
@@ -114,14 +121,13 @@ create firmware tags or publish firmware releases.
 
 ## Content and images
 
-The [October 2026 content review](content-review.md) records the learning aims and
-route coverage. Board photos and component pictures live in
+The [content review](content-review.md) records the writing principles, page
+coverage and remaining curriculum work. Board photos and component pictures live in
 `public/assets/hardware/`; their sources, licences and display changes are listed
 on `/image-credits/`. `src/data/board-images.json` selects individual Pico boards
 from the original manufacturer family photographs. The USB, power and signal wiring
 SVGs show functional connections; the adjacent text and helper notes describe the
-same connections for readers who cannot use the images. The build guide puts the
-three-wire VBUS-powered build and first colour first, with setup and electrical
-detail in optional sections for adult helpers. Separate LED power and a capacitor
-are a later experiment; signal upgrades follow that. Device-free previews belong
-on the learning pages, not as a detour in the hardware build guide.
+same connections for readers who cannot use the images. The build guide starts with three wires, USB power and a colour change. It then
+uses small experiments to explain what the parts do. Setup and electrical detail
+are in helper notes. The learning page connects these activities to computing,
+messages between devices and projects learners can design themselves.

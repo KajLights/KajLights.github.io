@@ -1,53 +1,65 @@
-# Website content review — 30 October 2026
+# Website purpose and content review — 30 October 2026
 
-The review uses Found in Space’s website sources for its shared educational aim:
-people can enter through play, investigation or making, then use understanding to
-imagine possibilities, ask useful questions and assess results. KajLights applies
-this to electronics, computing and networking through microcontrollers. Coding
-is one part of that experience. AI can help make an idea, while understanding
-helps someone formulate the request and judge the result; AI is not a prerequisite.
+KajLights helps people learn electronics, computing and networking by making
+things with microcontrollers. Understanding how a circuit, a program and messages
+work together gives people more ideas for what to build. It also helps them
+make specific requests to AI and judge whether the result does what they intended.
 
-| Surface | Review outcome |
+The shared [project and learning goals](https://github.com/KajLights/lightvm/blob/main/docs/project-goals.md)
+record this direction for the website and LightVM. This review was informed by
+Found in Space's home, About, Question and Learn & Build website sources, and its
+mission: give people material to explore, understand and create with. KajLights
+applies that approach to circuits and computers.
+
+## Writing and activity principles
+
+- Start with something the visitor can do or imagine: make a door signal, move a
+  light or send a command. Explain the relevant idea through that example.
+- Use ordinary language and concrete verbs. Introduce technical terms where
+  they help explain a job, such as a protocol's rules for exchanging messages.
+- Treat electronics, computing and communications as connected subjects. Coding
+  lessons alone do not fulfil the project purpose.
+- Make the first build achievable for a child of about ten with an adult helper.
+  Connect the lights, change a colour and follow a question. Keep buying,
+  firmware preparation and detailed electrical checks in helper notes.
+- Keep each page focused on its task. The build page builds hardware; the Learn
+  page also offers browser activities. A later experiment introduces a component
+  because it has a useful job, not because the introduction needs more detail.
+- Use practical feedback to correct the guide. Do not turn every correction
+  into a prominent anecdote, warning or extra restriction. The first Pico build
+  uses USB VBUS power, GND and a direct GP16-to-DIN connection. It does not impose
+  an arbitrary LED count or require extra signal components.
+- Demonstrate the AI rationale with a specific request and an observable test.
+  The countdown example describes colours, timing and completion; the learner
+  can predict particular frames and compare them with the result.
+- State availability where it affects the next step. The existing browser
+  lessons, prepared-board activities and developer-level network extensions
+  need different preparation. Educational aims are not evaluated outcomes.
+
+## Coverage
+
+| Surface | Result of the review |
 | --- | --- |
-| Home | Introduces all three learning areas, the whole circuit/program/message system, imagination and AI, boards and early-testing status. |
-| About | Explains the educational aims and the connection to Found in Space; distinguishes aspirations from evaluated outcomes and available features from future work. |
-| Learn (new) | Offers concrete investigations in electronics, computing and communications, plus an example of asking AI for explanations and tests. Clearly separates existing browser lessons from early hardware/network prompts. |
-| Build | Adds six identified board photographs, component pictures, anatomy notes, a power/data/ground diagram and equivalent text/table. Explains exact models, firmware availability, level shifting, power and first experiments. |
-| Hardware | Replaces symbolic board artwork with model-specific photos; distinguishes chip capability from features enabled in firmware. |
-| Install and Releases | Defines firmware and feature profiles in plain language and connects setup to the wider learning path. Existing availability checks and installation behaviour are retained. |
-| Navigation and footer | Adds Learn and image credits; broadens the site description beyond programming. |
-| Studio | Reviewed as the existing device-management tool; its working controls and implementation are unchanged. |
-| Image credits (new) | Records primary sources, attribution, licences and display changes. |
+| Home | Explains the purpose with door signals, countdowns and moving lights; connects three subjects to actions; retains boards, build routes and concise early-testing status. |
+| Learn | Gives activities with actions, observations and explanations: power versus data, colour mixing, time and memory, independent execution, USB versus Wi-Fi, and MQTT. Replaces the abstract AI prompt with a testable countdown request. |
+| About | States the educational purpose, the role of understanding when building with AI, the relationship to Found in Space, current material and the intended first-build audience. |
+| Build | Preserves the three-wire USB build and diagrams. Removes the LED-count anecdote and repeated personal hardware reports. Uses colour signals, movement and independent execution as extensions. Keeps electrical checks beside their wiring steps and detailed help in expandable notes. |
+| Hardware | Explains processor, memory and flash by their jobs; keeps exact board identification, photographs, manufacturer links and firmware availability. |
+| Install and Releases | Explains firmware, feature choices and clean installation in direct language. Keeps the distinction between installed firmware and editable lighting programs. |
+| Device workspace | Simplifies explanatory text, empty states and feature labels. Installation, device checks, warnings about erasure and behaviour are unchanged. |
+| Shared layout and metadata | Describes the learning purpose consistently in the page titles, descriptions and footer. |
+| Image credits | Retains source attribution and licence information; describes the three wiring diagrams without a personal hardware anecdote. |
+| Project documentation | Adds the shared learning goals to LightVM and links them from its README, documentation index, teaching guide and website implementation plan. |
 
-The build guide is aimed at a child of about ten, working with an adult helper.
-The first reward is a light and a colour change, followed by short, playful
-challenges. Buying, firmware preparation, electrical specifications and diagnostic
-instruments belong in optional helper sections, not in the first activity.
+The public website is built from `src/`. Retired Jekyll files in `docs/` are not
+published. The technical release-policy documentation remains a maintainer guide.
+No application version, runtime behaviour or firmware acceptance policy changes
+are part of this content review.
 
-The first Pico 2 W build is three wires: VBUS to LED 5 V, GND to GND and GP16
-straight to DIN. USB powers both board and LEDs; no separate supply, capacitor,
-data resistor or level shifter is in the starter parts list. The build page stays
-focused on building hardware and has no device-free preview detour.
+## Further learning material
 
-Kaj’s working 200-LED USB/VBUS setup is reported as experience, not a universal
-USB current or pixel-count promise. The starter no longer imposes an arbitrary
-8–16-pixel limit. Helper notes cover the source/cable/connection budget and the
-large difference between patterns and full white. The later power experiment adds
-a separate 5 V supply and capacitor, explicitly removing the VBUS-to-LED wire to
-avoid connecting the two supplies. A third diagram adds signal upgrades.
-
-His occasional ESP32-C3 flashing has no confirmed cause. Optional investigations
-distinguish the first data lead from the regenerated pixel chain, voltage margin
-from timing, and observations from guarantees. A 74AHCT125 module and data resistor
-have a purpose to explore once the first build works.
-
-Raspberry Pi documentation, Worldsemi’s WS2812B datasheet, TI’s AHCT125 datasheet
-and Adafruit’s direct-drive/power guidance support these explanations. All three
-images show functional connections, not physical pin locations. This content
-update does not constitute physical acceptance of a board, firmware build or
-installation method.
-
-The site remains experimental. It does not promise installable firmware where the
-catalogue has none, public kaj-fi distribution, a completed electronics/networking
-curriculum or measured learning outcomes. No application version changes are part
-of this review.
+The twelve programming lessons are available now. The hardware and network
+activities are a smaller collection, and network setup still uses developer
+guides. Next curriculum work should make circuit measurement, message tracing
+and connection-loss behaviour practical to explore with learners. This review
+does not claim to have delivered or evaluated a complete course in those areas.

@@ -3,7 +3,10 @@ import Site from "../layouts/Site.astro";
 const base = import.meta.env.BASE_URL;
 ---
 
-<Site title="Set up a device">
+<Site
+  title="Set up a device"
+  description="Install LightVM firmware for your exact board, connect it to the browser and check that it is ready for your lighting project."
+>
   <section class="wrap page-intro narrow">
     <p class="eyebrow">FROM BOARD TO SOMETHING YOU MADE</p>
     <h1>Set up a device</h1>
@@ -44,9 +47,8 @@ const base = import.meta.env.BASE_URL;
         the selected model.
       </li>
       <li>
-        Save anything you need before installing. Current release contracts
-        require a clean installation and do not promise to retain programs,
-        settings or nicknames.
+        Save anything you need before installing. Installation erases saved
+        programs, settings and nicknames.
       </li>
       <li>
         Reconnect after installation. The workspace compares the device identity
@@ -56,14 +58,15 @@ const base = import.meta.env.BASE_URL;
     <h2>For an existing device</h2>
     <p>
       Connect in <strong>My devices</strong> first to read its identity,
-      nickname, version and compiled features. The firmware view will show
-      feature additions and removals, and label a deliberate downgrade.
+      nickname, software version and installed features. The firmware view shows
+      which features an installation would add or remove, and whether you have
+      selected an older version.
     </p>
     <p>
-      Setup is also a chance to understand the system: the board is the
-      hardware, firmware runs on it, and your animation supplies its lighting
-      instructions. Follow the <a href={`${base}learn/`}>learning path</a> to
-      investigate those layers and the messages between them.
+      Once LightVM is installed, you can send new animations to the board from
+      the lighting editor. Changing a pattern does not require reinstalling the
+      firmware. Follow the{" "}
+      <a href={`${base}build/#first-pattern`}>first-colour steps</a> to try it.
     </p>
     <p>
       A settings export contains the nickname and available configuration. It
@@ -72,14 +75,14 @@ const base = import.meta.env.BASE_URL;
     </p>
     <h2>Browser and connection support</h2>
     <p>
-      Direct ESP installation needs Web Serial on HTTPS or localhost, usually
-      desktop Chrome or Edge. UF2 download works without a browser hardware API.
-      Local network access may need a browser permission; the website never
-      connects to your LAN through a remote server.
+      Use desktop Chrome or Edge for a USB connection to the board. Pico
+      installation uses a UF2 file you download and copy to the board’s USB
+      drive; downloading that file works in other browsers too. When connecting
+      over your local network, your browser may ask for permission.
     </p>
     <p>
-      OTA is not implemented. Installation support is enabled per released build
-      and method after acceptance evidence is recorded.
+      Firmware installation currently uses USB. A download or installation
+      button appears only when that method is approved for the selected build.
     </p>
     <a class="text-link" href={`${base}hardware/`}>
       Check the board guide →
