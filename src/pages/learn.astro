@@ -1,0 +1,210 @@
+---
+import Site from "../layouts/Site.astro";
+const base = import.meta.env.BASE_URL;
+---
+
+<Site
+  title="Learn with microcontrollers"
+  description="Explore electronics, computing and communications together. Small experiments with lights and microcontrollers help you understand, imagine and make."
+>
+  <section class="wrap page-intro narrow">
+    <p class="eyebrow">PLAY · INVESTIGATE · MAKE</p>
+    <h1>Learn how the whole thing works.</h1>
+    <p class="intro">
+      A microcontroller brings a circuit, a program and a conversation between
+      devices together.
+    </p>
+    <p>
+      Making a light change colour gives you three things to investigate: the
+      electronics that make it possible, the computation that decides what
+      happens, and the signals that carry instructions. Learning a little of
+      each opens up much more than learning a programming language alone.
+    </p>
+    <p>
+      These are suggested routes, not a required order. Start with play, a
+      question or something you want to make. The browser lessons are available
+      now; the electronics and communications activities below are early
+      investigation prompts, not a classroom-tested course.
+    </p>
+    <nav class="guide-links" aria-label="Learning areas">
+      <a href="#electronics">Electronics</a>
+      <a href="#computing">Computing</a>
+      <a href="#communications">Communications</a>
+      <a href="#your-idea">Your own idea</a>
+    </nav>
+  </section>
+  <section class="wrap section narrow prose" id="electronics">
+    <p class="eyebrow">01 / ENERGY AND SIGNALS</p>
+    <h2>Electronics: follow the circuit.</h2>
+    <p>
+      <strong>Start with:</strong> the{" "}
+      <a href={`${base}build/#meet-the-boards`}>board pictures</a> and{" "}
+      <a href={`${base}build/#connections`}>wiring diagram</a>. You can trace
+      the connections on screen before buying or powering anything.
+    </p>
+    <ul class="parts-list">
+      <li>
+        Find the USB socket, processor and connection pads. Which part runs the
+        program? Which parts connect it to the world?
+      </li>
+      <li>
+        Trace power, data and ground separately. Why does the LED strip need its
+        own power connection as well as a data wire?
+      </li>
+      <li>
+        Find the level shifter. The board sends 3.3 V signals and these LEDs use
+        5 V signals: what job does the shifter do?
+      </li>
+      <li>
+        With the circuit assembled and checked, compare dim red with dim white.
+        White uses several colour channels; use the LED specifications to reason
+        about its current demand.
+      </li>
+    </ul>
+    <p>
+      <strong>What you are exploring:</strong> voltage, current, polarity, a
+      shared electrical reference and the difference between supplying power and
+      carrying information. A breadboard makes temporary connections; it is not
+      a component that runs code.
+    </p>
+    <p>
+      Disconnect both supplies before changing wiring. Follow the build guide
+      for the first powered experiment.
+    </p>
+    <a class="text-link" href={`${base}build/`}>
+      Gather the parts and build a small circuit →
+    </a>
+  </section>
+  <section class="wrap section narrow prose" id="computing">
+    <p class="eyebrow">02 / INSTRUCTIONS, MEMORY AND TIME</p>
+    <h2>Computing: explain the behaviour.</h2>
+    <p>
+      <strong>Start with:</strong> the{" "}
+      <a href="https://kajlights.github.io/lightvm/">lighting playground</a>.
+      Choose a lesson under <strong>Learn with lights</strong>, then use{" "}
+      <strong>Try it here → Start preview</strong>. No board is needed. Python,
+      JavaScript and visual blocks offer different ways to express the same
+      ideas.
+    </p>
+    <ul class="parts-list">
+      <li>
+        Predict what an example will do before running it. Change one colour or
+        timing value, then compare the result with your prediction.
+      </li>
+      <li>
+        Follow a loop across the pixels. How does the program know which light
+        it is changing?
+      </li>
+      <li>
+        Use the lesson’s stepping controls to investigate what changes between
+        frames. What must the program remember to make something move?
+      </li>
+      <li>
+        Save a pattern and run it on a board. Distinguish editable source, the
+        compiled program and the firmware that executes it.
+      </li>
+    </ul>
+    <p>
+      <strong>What you are exploring:</strong> representation, logic, state,
+      memory, timing and debugging. Coding is one tool for expressing these
+      ideas. Predicting, drawing a sequence or explaining an unexpected result
+      are useful ways to work with them too.
+    </p>
+    <p>
+      The twelve existing beginner lessons move from instructions, names and
+      repetition to choices, time, functions, arrays and small installations. A
+      simulated light helps you study a rule; real hardware also introduces
+      power, wiring and timing constraints.
+    </p>
+    <a class="text-link" href="https://kajlights.github.io/lightvm/">
+      Open the lessons and preview ↗
+    </a>
+  </section>
+  <section class="wrap section narrow prose" id="communications">
+    <p class="eyebrow">03 / MESSAGES BETWEEN THINGS</p>
+    <h2>Networking & communications: follow a message.</h2>
+    <p>
+      A data signal to an LED, a USB command from a browser and a message over
+      Wi-Fi all carry information. They use different connections and rules. A
+      protocol is an agreement about how to represent a message and what it
+      means.
+    </p>
+    <p>
+      <strong>Start with:</strong> an existing LightVM device and{" "}
+      <a href={`${base}studio/#/devices`}>My devices</a>. Read its identity and
+      features. Give it a nickname and ask why a friendly name is different from
+      the identity used to send a command to the right board.
+    </p>
+    <ul class="parts-list">
+      <li>
+        Draw the path from your browser to the board and from the board to the
+        LEDs. Where is the program running? Where is a message being sent?
+      </li>
+      <li>
+        With a Wi-Fi-enabled board and firmware, compare USB with a
+        local-network connection. What are the jobs of an address, a device name
+        and discovery?
+      </li>
+      <li>
+        Run an animation on the device, then close the browser while leaving the
+        board powered. Predict whether the lights will stop, and explain what
+        you observe.
+      </li>
+      <li>
+        For a later experiment, use MQTT with an existing broker. A publisher
+        sends a message on a topic; subscribers receive messages for topics they
+        follow. What should a light do if updates stop arriving?
+      </li>
+    </ul>
+    <p>
+      <strong>What you are exploring:</strong> addressing, protocols,
+      publish/subscribe, independence and recovery. Network activities need the
+      relevant firmware features and a local network; MQTT also needs a broker.
+      The original Pico has no Wi-Fi. These are optional extensions to the first
+      USB lighting project, and currently use developer-level guides.
+    </p>
+    <div class="guide-links">
+      <a href="https://github.com/KajLights/lightvm/blob/main/docs/networking.md">
+        Network setup and concepts ↗
+      </a>
+      <a href="https://github.com/KajLights/lightvm/blob/main/docs/mqtt.md">
+        MQTT and Home Assistant ↗
+      </a>
+    </div>
+  </section>
+  <section class="wrap section narrow prose" id="your-idea">
+    <p class="eyebrow">UNDERSTANDING → IMAGINATION → MAKING</p>
+    <h2>Use what you know to ask for something new.</h2>
+    <p>
+      Imagine a light that signals a message, responds to a sensor or shows the
+      state of a room. Sketch the input, the decision and the output. Identify
+      which parts you have, what they can do and what you still need to find
+      out. Those ideas are starting points to design, not promises that every
+      sensor or connection is already supported here.
+    </p>
+    <p>
+      If you use an AI assistant, bring it that context. Ask it to explain its
+      assumptions and propose a small test. For example:
+    </p>
+    <blockquote class="learning-prompt">
+      I have a Pico 2 W running LightVM and 12 RGB LEDs on GP16. I want a moving
+      colour pattern. Explain what must happen in the circuit, the program and
+      the LED data signal. What can I test in the browser first, and what needs
+      checking on the real board?
+    </blockquote>
+    <p>
+      Compare the answer with the actual parts, documentation and observations.
+      Ask what happens at startup, when a message is late or when power is
+      removed. Understanding gives you more to imagine, a clearer request to
+      make and a better way to judge what is built.
+    </p>
+    <p>
+      For a group or classroom, invite people to predict, draw, build and
+      explain in different roles. Adapt the activities to their experience; this
+      project’s educational aims still need evaluation in practice.
+    </p>
+    <a class="text-link" href={`${base}about/#why-understanding`}>
+      Read about the shared aim with Found in Space →
+    </a>
+  </section>
+</Site>

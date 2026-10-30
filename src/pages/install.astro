@@ -9,8 +9,10 @@ const base = import.meta.env.BASE_URL;
     <h1>Set up a device</h1>
     <p class="intro">Start with the exact model in your hand.</p>
     <p>
-      The workspace shows published firmware for that board, the features it
-      includes, and the consequences of installing it.
+      Firmware is the software installed on the microcontroller. LightVM
+      firmware lets it run your lighting programs and communicate with the
+      browser. The workspace shows published firmware for your exact board, its
+      features and what installation will change.
     </p>
     <div class="actions">
       <a class="button dark" href={`${base}studio/#/firmware`}>
@@ -56,6 +58,12 @@ const base = import.meta.env.BASE_URL;
       Connect in <strong>My devices</strong> first to read its identity,
       nickname, version and compiled features. The firmware view will show
       feature additions and removals, and label a deliberate downgrade.
+    </p>
+    <p>
+      Setup is also a chance to understand the system: the board is the
+      hardware, firmware runs on it, and your animation supplies its lighting
+      instructions. Follow the <a href={`${base}learn/`}>learning path</a> to
+      investigate those layers and the messages between them.
     </p>
     <p>
       A settings export contains the nickname and available configuration. It

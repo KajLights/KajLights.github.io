@@ -1,6 +1,8 @@
 ---
 import Site from "../layouts/Site.astro";
 import boards from "../data/boards.json";
+import photos from "../data/board-images.json";
+import BoardPhoto from "../components/BoardPhoto.astro";
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -17,7 +19,9 @@ const base = import.meta.env.BASE_URL;
       A microcontroller board runs a program and talks to lights or sensors
       through its connection pins. Add LEDs, wiring, power and LightVM firmware
       to turn it into a lighting controller. These are standard development
-      boards you can buy separately, rather than a special KajLights kit.
+      boards you can buy separately. They bring electronics, computation and
+      communication into the same small system: power the circuit, run a rule
+      and send a signal to something in the world.
     </p>
   </section>
   <section class="wrap section narrow prose" id="find-a-board">
@@ -70,15 +74,12 @@ const base = import.meta.env.BASE_URL;
   <section class="wrap board-grid" aria-label="Board models">
     {boards.map((board) => (
       <article class="board-card" id={board.id}>
-        <span class="board-art" aria-hidden="true">
-          <i></i>
-          <b>{board.id.startsWith("pico") ? "RP" : "X"}</b>
-          <i></i>
-        </span>
+        <BoardPhoto id={board.id as keyof typeof photos} name={board.name} />
         <p class="eyebrow">
           {board.chip} · {board.flash_bytes / 1048576} MiB NOMINAL FLASH
         </p>
         <h2>{board.name}</h2>
+        <p>{photos[board.id as keyof typeof photos].note}</p>
         <p>{board.hint}</p>
         <p class="muted">
           {board.method === "uf2"
@@ -94,7 +95,22 @@ const base = import.meta.env.BASE_URL;
       </article>
     ))}
   </section>
+  <div class="wrap">
+    <p class="image-credit">
+      Photos: Raspberry Pi and Seeed Studio. Enlarged, not to the same scale.{" "}
+      <a href={`${base}image-credits/`}>Image sources and licences</a>.
+    </p>
+  </div>
   <section class="wrap section narrow prose">
+    <h2>Hardware capability and software support</h2>
+    <p>
+      A board may contain a radio or microphone without the installed firmware
+      using it. Check the device’s reported features as well as its model. Our{" "}
+      <a href={`${base}learn/`}>learning path</a> explains how circuits,
+      programs and communications fit together; the{" "}
+      <a href={`${base}build/#connections`}>starter wiring diagram</a> shows one
+      concrete setup.
+    </p>
     <h2>Working with sound</h2>
     <p>
       kaj-fi is a separate analyser project for the XIAO ESP32-S3 Sense

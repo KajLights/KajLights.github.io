@@ -1,0 +1,79 @@
+---
+import Site from "../layouts/Site.astro";
+const piSource =
+  "https://github.com/raspberrypi/documentation/tree/master/documentation/asciidoc/microcontrollers/pico-series/images";
+const componentsSource = "https://github.com/raspberrypilearning/components";
+---
+
+<Site title="Image credits">
+  <section class="wrap page-intro narrow">
+    <p class="eyebrow">PICTURES TO LEARN WITH</p>
+    <h1>Image credits</h1>
+    <p class="intro">
+      The hardware pictures come from the people who make and document these
+      parts.
+    </p>
+  </section>
+  <section class="wrap section narrow prose">
+    <h2>Raspberry Pi boards</h2>
+    <p>
+      Raspberry Pi Pico family photographs © Raspberry Pi, from the{" "}
+      <a href={piSource}>
+        official documentation’s pico-1s.png and pico-2s.png
+      </a>
+      . Used under{" "}
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+      , as specified in the{" "}
+      <a href="https://github.com/raspberrypi/documentation/blob/master/LICENSE.md">
+        documentation licence
+      </a>
+      . The pages show selected boards from the family photographs at different
+      display sizes. Those selected views remain under the same licence.
+    </p>
+    <h2>Seeed Studio XIAO boards</h2>
+    <p>
+      Board photographs © Seeed Studio, from its{" "}
+      <a href="https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/">
+        XIAO ESP32-C3
+      </a>
+      ,{" "}
+      <a href="https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/">
+        XIAO ESP32-S3
+      </a>{" "}
+      and{" "}
+      <a href="https://wiki.seeedstudio.com/xiao_esp32c6_getting_started/">
+        XIAO ESP32-C6
+      </a>{" "}
+      guides. Used under{" "}
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+      , under the{" "}
+      <a href="https://wiki.seeedstudio.com/License/">
+        Seeed documentation and images licence
+      </a>
+      . Images are unchanged apart from display size.
+    </p>
+    <h2>Component pictures</h2>
+    <p>
+      Addressable pixel, breadboard, jumper wires, 330 Ω resistor and capacitor
+      images from{" "}
+      <a href={componentsSource}>Components by the Raspberry Pi Foundation</a>,
+      used under{" "}
+      <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+      Source files are <code>adafruit-neopixel.png</code>,{" "}
+      <code>breadboard.png</code>, <code>jumper-male-to-male.png</code>,{" "}
+      <code>resistor-330r.png</code> and <code>capacitor.png</code>. Images are
+      unchanged apart from display size. The capacitor picture illustrates the
+      type of part; the build guide specifies the required rating.
+    </p>
+    <h2>Wiring diagram</h2>
+    <p>
+      The connection diagram is drawn for KajLights, using the Pico pin
+      documentation and{" "}
+      <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/best-practices">
+        Adafruit’s NeoPixel wiring guidance
+      </a>{" "}
+      as technical references. It shows functional connections, not a physical
+      breadboard layout.
+    </p>
+  </section>
+</Site>
