@@ -37,42 +37,46 @@ const base = import.meta.env.BASE_URL;
     <p class="eyebrow">01 / ENERGY AND SIGNALS</p>
     <h2>Electronics: follow the circuit.</h2>
     <p>
-      <strong>Start with:</strong> the{" "}
-      <a href={`${base}build/#meet-the-boards`}>board pictures</a> and{" "}
-      <a href={`${base}build/#connections`}>wiring diagram</a>. You can trace
-      the connections on screen before buying or powering anything.
+      <strong>First, make a light glow.</strong> Follow the{" "}
+      <a href={`${base}build/`}>quick Pico build</a> with an adult helper, or
+      try the lights on screen. Change the colour. What would you like it to do
+      next?
     </p>
     <ul class="parts-list">
       <li>
-        Find the USB socket, processor and connection pads. Which part runs the
-        program? Which parts connect it to the world?
+        Invent a colour signal for “come in”, “busy” or “snack time”. Can
+        someone else guess your message?
       </li>
       <li>
-        Trace power, data and ground separately. Why does the LED strip need its
-        own power connection as well as a data wire?
+        Unplug both supplies and trace the wires with your finger. Which ones
+        bring power? Which one carries the colour instructions?
       </li>
       <li>
-        Find the level shifter. The board sends 3.3 V signals and these LEDs use
-        5 V signals: what job does the shifter do?
+        Compare the <a href={`${base}build/#connections`}>quick circuit</a> with
+        the <a href={`${base}build/#make-it-reliable`}>upgraded one</a>. What
+        has been added? Pick one part and find out which problem it helps solve.
       </li>
       <li>
-        With the circuit assembled and checked, compare dim red with dim white.
-        White uses several colour channels; use the LED specifications to reason
-        about its current demand.
+        Something flashing when it should stay still? Choose one test from the{" "}
+        <a href={`${base}build/#glitches`}>glitch detective</a>. Make a
+        prediction, test it with your helper, and compare what happened.
       </li>
     </ul>
     <p>
-      <strong>What you are exploring:</strong> voltage, current, polarity, a
-      shared electrical reference and the difference between supplying power and
-      carrying information. A breadboard makes temporary connections; it is not
-      a component that runs code.
+      You are finding out how power and information work together. The quick
+      Pico route has no data resistor or level shifter. Once it glows, you can
+      explore{" "}
+      <a href={`${base}build/#why-direct-works`}>
+        why it works and when extra parts help
+      </a>
+      .
     </p>
     <p>
       Disconnect both supplies before changing wiring. Follow the build guide
       for the first powered experiment.
     </p>
     <a class="text-link" href={`${base}build/`}>
-      Gather the parts and build a small circuit →
+      Make your first light glow →
     </a>
   </section>
   <section class="wrap section narrow prose" id="computing">

@@ -19,12 +19,24 @@ helps someone formulate the request and judge the result; AI is not a prerequisi
 | Studio | Reviewed as the existing device-management tool; its working controls and implementation are unchanged. |
 | Image credits (new) | Records primary sources, attribution, licences and display changes. |
 
-The wiring example is specifically a Pico 2 W driving a small 5 V RGB WS2812B
-strip through a 74AHCT125 module and series resistor, with separate LED power,
-common ground and a correctly polarised capacitor. It shows functional
-connections, not physical pin locations. Raspberry Pi documentation and Adafruit’s
-NeoPixel guidance support the connections. This content update does not constitute
-physical acceptance of a board, firmware build or installation method.
+The build guide is aimed at a child of about ten, working with an adult helper.
+The first reward is a light and a colour change, followed by short, playful
+challenges. Buying, firmware preparation, electrical specifications and diagnostic
+instruments belong in optional helper sections, not in the first activity.
+
+The quick Pico 2 W circuit sends GP16 straight to LED DIN, with no data resistor
+or level shifter. It retains separate 5 V LED power, common ground and the power
+input capacitor. Kaj’s successful direct drive, including long strips, is reported
+as experience. His occasional ESP32-C3 flashing has no confirmed cause. Optional
+investigations distinguish the first data lead from the regenerated pixel chain,
+voltage margin from timing, and observations from guarantees. The later diagram
+adds a 74AHCT125 module and data resistor, with a purpose for each part.
+
+Raspberry Pi documentation, Worldsemi’s WS2812B datasheet, TI’s AHCT125 datasheet
+and Adafruit’s direct-drive/power guidance support these explanations. Both
+images show functional connections, not physical pin locations. This content
+update does not constitute physical acceptance of a board, firmware build or
+installation method.
 
 The site remains experimental. It does not promise installable firmware where the
 catalogue has none, public kaj-fi distribution, a completed electronics/networking

@@ -13,7 +13,7 @@ const parts = [
     file: "breadboard.png",
     name: "Breadboard",
     description:
-      "Its connected holes hold a temporary circuit. Use the board with soldered headers; the bare edge holes alone will not make a reliable connection.",
+      "A place to plug parts together. A microcontroller needs fitted header pins to plug into it; bare holes will not make a reliable connection.",
   },
   {
     file: "jumper-wires.png",
@@ -25,7 +25,7 @@ const parts = [
     file: "resistor-330r.png",
     name: "Data resistor",
     description:
-      "A 330 Ω resistor is shown. Use 330–470 Ω in the data line near the first LED; it protects the signal connection, not the strip’s power supply.",
+      "For a later upgrade: this is a 330 Ω resistor. It goes in the data wire near the first LED. The quick Pico route works without one; it is worth adding when making a more robust build.",
   },
   {
     file: "capacitor.png",
@@ -38,55 +38,540 @@ const parts = [
 
 <Site
   title="Build your first lights"
-  description="Build a small LightVM lighting project: choose a board, gather LEDs, cables and power, connect the parts and try your first pattern."
+  description="Make a light glow, change its colour and try a challenge. A quick Pico wiring route, with help for adults and experiments to discover how it works."
 >
   <section class="wrap page-intro narrow">
-    <p class="eyebrow">A BOARD, A FEW LIGHTS, YOUR IDEAS</p>
-    <h1>Build your first lights.</h1>
-    <p class="intro">
-      See the parts, follow the connections and make a small system you can
-      explain.
-    </p>
+    <p class="eyebrow">YOUR FIRST MISSION</p>
+    <h1>Make a light glow.</h1>
+    <p class="intro">Then make it your favourite colour.</p>
     <p>
-      This starter project uses a Raspberry Pi Pico 2 W and a short strip or
-      ring of individually addressable LEDs: each light can have its own colour.
-      LightVM is the firmware — the software on the board — that runs your
-      patterns. You are assembling ready-made parts, not designing a circuit
-      board from scratch. Along the way, follow the power, the computation and
-      the data signal: each is a different part of making the lights work.
+      You can try the lights on screen right now. For real lights, build with an
+      adult who can help get the board and power ready. You do the choosing,
+      changing and discovering.
+    </p>
+    <div class="actions">
+      <a class="button dark" href="https://kajlights.github.io/lightvm/">
+        Try the lights on screen ↗
+      </a>
+      <a class="text-link" href="#parts">
+        Build with a Pico →
+      </a>
+    </div>
+    <p class="small">
+      On screen: choose a lesson under <strong>Learn with lights</strong>, then
+      open <strong>Try it here → Start preview</strong>.
     </p>
     <nav class="guide-links" aria-label="In this build guide">
-      <a href="#before-you-buy">Before you buy</a>
+      <a href="#parts">Get the bits</a>
+      <a href="#connections">Connect</a>
+      <a href="#first-pattern">First colour</a>
+      <a href="#try-next">Try a challenge</a>
       <a href="#meet-the-boards">Board pictures</a>
-      <a href="#parts">Parts list</a>
-      <a href="#connections">Connections</a>
-      <a href="#first-pattern">First pattern</a>
+      <a href="#make-it-reliable">Make it reliable</a>
     </nav>
   </section>
   <section class="wrap narrow" id="before-you-buy">
     <div class="testing-note">
-      <p class="eyebrow">EARLY TESTING</p>
-      <h2>Check the software before buying the hardware.</h2>
+      <p class="eyebrow">A WORKSHOP IN PROGRESS</p>
       <p>
-        This is an experimental build, not a finished kit. Check the{" "}
-        <a href={`${base}releases/`}>release catalogue</a> for an installable
-        LightVM build for your exact board. If none is available, hardware setup
-        currently means compiling firmware with the developer tools. The{" "}
+        KajLights is in early testing, with bugs and gaps still to find. Try the
+        browser first. Before buying hardware, your helper should check the{" "}
+        <a href={`${base}releases/`}>firmware catalogue</a>: if there is no
+        suitable download, setting up a board currently needs developer tools.
+      </p>
+    </div>
+  </section>
+  <section class="wrap section narrow prose" id="parts">
+    <p class="eyebrow">1 / GET READY TO MAKE SOMETHING</p>
+    <h2>Get your bits together.</h2>
+    <ul class="parts-list">
+      <li>
+        <strong>A Raspberry Pi Pico 2 W</strong> with LightVM already installed.
+        Fitted header pins make it easier to connect.
+      </li>
+      <li>
+        <strong>A computer and a Micro-USB data cable.</strong> The cable powers
+        the Pico and lets you talk to it.
+      </li>
+      <li>
+        <strong>A short 5 V RGB LED strip or ring.</strong> Start with 8–16
+        WS2812B-compatible pixels and fitted wires.
+      </li>
+      <li>
+        <strong>
+          Connecting wires and a breadboard or suitable connectors.
+        </strong>{" "}
+        Ask your helper to fit any parts that need soldering.
+      </li>
+      <li>
+        <strong>A suitable 5 V LED power supply and input capacitor.</strong>{" "}
+        Your helper checks these before you switch on.
+      </li>
+    </ul>
+    <p>
+      The quick Pico route sends data straight to the lights. You do not need to
+      start with a level shifter or data resistor. Those become useful things to
+      investigate <a href="#make-it-reliable">once it works</a>.
+    </p>
+    <div class="guide-links">
+      <a href="#meet-the-boards">What do the boards look like?</a>
+      <a href="#parts-in-pictures">What do the smaller bits look like?</a>
+    </div>
+    <details class="guide-detail" id="adult-setup">
+      <summary>For your adult helper: buying and preparing the board</summary>
+      <p>
+        Use{" "}
+        <a href="https://www.raspberrypi.com/products/raspberry-pi-pico-2/">
+          Raspberry Pi’s retailer finder
+        </a>{" "}
+        and choose the exact model. A Pico W and Pico 2 W need different
+        firmware. For alternatives, use the{" "}
+        <a href={`${base}hardware/`}>hardware guide</a> and that model’s pinout.
+      </p>
+      <p>
+        <strong>Prepare this before the activity.</strong> Follow{" "}
+        <a href={`${base}install/`}>Set up a device</a> if a suitable approved
+        build is available. Otherwise, the{" "}
         <a href="https://github.com/KajLights/lightvm/blob/main/docs/pico2-w.md">
           Pico 2 W developer guide
         </a>{" "}
-        covers that route; it needs a local development environment.
+        requires a local build environment. For a Pico 2 W UF2, hold BOOTSEL
+        while connecting USB and copy the file to the RP2350 drive. Experimental
+        installs may erase earlier work.
       </p>
       <p>
-        You can start today in the{" "}
-        <a href="https://kajlights.github.io/lightvm/">
-          browser lighting playground
+        In the <a href="https://kajlights.github.io/lightvm/">LightVM editor</a>
+        , connect over USB and open Configuration. Set up a WS2812B output on{" "}
+        <strong>GP16</strong> with the actual pixel count, a low brightness
+        limit and the strip’s colour order (commonly GRB). Save it and try a
+        steady colour. Desktop Chrome or Edge supports the browser USB tools;
+        use a data-capable cable.
+      </p>
+      <p>
+        Choose <strong>5 V RGB</strong> pixels, not RGBW or a non-addressable
+        strip. Use a ready-made enclosed 5 V DC adapter and wiring rated for the
+        strip’s maximum current, including full white. Fit a{" "}
+        <strong>500–1000 µF capacitor rated at least 6.3 V</strong> across the
+        LED power input, unless already provided. Its negative stripe goes to
+        ground. The{" "}
+        <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels">
+          Adafruit power guide
         </a>{" "}
-        with no board. Try an example and its on-screen preview before deciding
-        to buy parts. Features and instructions are still being tested, and
-        changes may require wiping and setting up a test board again.
+        explains sizing the supply. A breadboard is for this small starter
+        circuit, not carrying the current of a long strip.
+      </p>
+    </details>
+  </section>
+  <section class="wrap section prose" id="connections">
+    <p class="eyebrow">2 / ONE WIRE CARRIES YOUR COLOUR INSTRUCTIONS</p>
+    <h2>Connect the Pico straight to the lights.</h2>
+    <p>
+      With both power sources unplugged, connect <strong>GP16 to DIN</strong> —
+      “data in” on the first LED. Follow the arrows along the strip. Your helper
+      checks power, the capacitor and the shared ground before switching on.
+    </p>
+    <figure class="wiring-figure">
+      <a
+        href={`${base}assets/hardware/pico2w-direct.svg`}
+        aria-label="Open the quick wiring diagram at full size"
+      >
+        <img
+          src={`${base}assets/hardware/pico2w-direct.svg`}
+          width="1280"
+          height="680"
+          alt="Computer powers Pico by USB. GP16 connects straight to the first LED DIN, without a resistor or level shifter. The separate 5 V supply powers the LEDs. Pico, LEDs and supply share ground. Capacitor positive goes to LED 5 V, negative to ground."
+          loading="lazy"
+        />
+      </a>
+      <figcaption>
+        Quick Pico setup: data goes straight to DIN. Purple is USB, teal is
+        data, red is +5 V and grey is ground. This shows connections, not
+        physical pin positions.{" "}
+        <a href={`${base}assets/hardware/pico2w-direct.svg`}>
+          Open the quick diagram at full size ↗
+        </a>
+      </figcaption>
+    </figure>
+    <div class="concept-note">
+      <h3>Spot the two different jobs.</h3>
+      <p>
+        The power wires make the lights able to shine. The data wire tells them
+        which colour to show. Can you trace each path with your finger?
       </p>
     </div>
+    <details class="guide-detail">
+      <summary>Helper’s wiring check: pins, power and switch-on order</summary>
+      <p>
+        Keep the lead to the first pixel short. Use the{" "}
+        <a href="https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html">
+          official Pico pin diagram
+        </a>
+        : GP16 is a signal name, <strong>not physical pin 16</strong>.
+      </p>
+      <table class="wiring-table">
+        <caption>Quick Pico 2 W connections</caption>
+        <thead>
+          <tr>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Pico GP16</th>
+            <td>First LED DIN, directly.</td>
+          </tr>
+          <tr>
+            <th scope="row">External supply +5 V</th>
+            <td>LED strip 5 V input.</td>
+          </tr>
+          <tr>
+            <th scope="row">External supply − / GND</th>
+            <td>LED ground and a Pico GND pin, joined together.</td>
+          </tr>
+          <tr>
+            <th scope="row">Input capacitor</th>
+            <td>
+              Across LED power: + to 5 V, − to ground. Check its polarity.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Pico Micro-USB</th>
+            <td>Computer, for the Pico’s power and data.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        In this setup, external 5 V stays off the Pico’s power and GPIO pins.
+        GPIO and 3V3 do not power the strip. Check for loose wires and shorts.
+        Power the LEDs before connecting the Pico’s USB; disconnect USB before
+        switching the LED supply off. Unplug both before changing connections.
+      </p>
+    </details>
+  </section>
+  <section class="wrap section narrow prose" id="first-pattern">
+    <p class="eyebrow">3 / MAKE IT YOURS</p>
+    <h2>Pick a colour. Make it glow.</h2>
+    <p>Once your helper has prepared and connected the board:</p>
+    <ol>
+      <li>
+        Open the{" "}
+        <a href="https://kajlights.github.io/lightvm/">lighting editor</a>. In
+        Python’s <strong>Examples…</strong> menu, choose{" "}
+        <strong>color.py</strong>.
+      </li>
+      <li>
+        Choose your connected LED output and press{" "}
+        <strong>Preview on device</strong>. Start dim. Your lights should show
+        one steady colour.
+      </li>
+      <li>
+        Open <strong>Preview settings &amp; inputs</strong>, then{" "}
+        <strong>What controls this animation?</strong>. Click the colour swatch,
+        pick a new colour and preview again. Can you make your favourite colour?
+      </li>
+    </ol>
+    <p>
+      <strong>You made a computer change something in the real world.</strong>{" "}
+      Now give it another job.
+    </p>
+    <p class="small">
+      Using the screen instead? Use <strong>Try it here → Start preview</strong>
+      . You can join in with the colour and pattern challenges below.
+    </p>
+    <details class="guide-detail">
+      <summary>Keep what you made</summary>
+      <p>
+        Use <strong>Save locally</strong> before closing the editor. This keeps
+        your editable work on your computer. Your helper can deploy the
+        animation and configure a device preset and startup behaviour when you
+        want the board to keep running it. The{" "}
+        <a href="https://github.com/KajLights/lightvm/blob/main/docs/web-editor.md">
+          workspace guide
+        </a>{" "}
+        explains those controls.
+      </p>
+    </details>
+  </section>
+  <section class="wrap section" id="try-next">
+    <p class="eyebrow">GOT A GLOW? PICK A CHALLENGE.</p>
+    <h2>Try it. Notice something. Try again.</h2>
+    <div class="subjects board-anatomy">
+      <article>
+        <h3>Invent a signal</h3>
+        <p>
+          Pick colours for “come in”, “busy” and “snack time”. Can someone else
+          guess your message?
+        </p>
+        <p>Explore: computers can use light to carry information.</p>
+      </article>
+      <article>
+        <h3>Make it move</h3>
+        <p>
+          Try <strong>rainbow.py</strong>, or a lesson under{" "}
+          <strong>Learn with lights</strong>. Predict what one change will do,
+          then try it.
+        </p>
+        <p>
+          Explore: a small change in instructions can change a whole pattern.
+        </p>
+      </article>
+      <article>
+        <h3>Be a wire detective</h3>
+        <p>
+          Unplug both supplies. Trace the data wire from Pico to first pixel.
+          Which wires carry the power? Why are they separate?
+        </p>
+        <p>Explore: a circuit and a program need each other.</p>
+      </article>
+    </div>
+  </section>
+  <section class="wrap section narrow prose" id="why-direct-works">
+    <p class="eyebrow">A QUESTION TO COME BACK TO</p>
+    <h2>It works. Why add more parts?</h2>
+    <p>
+      Kaj regularly drives strips straight from Picos, including long strips,
+      without a data resistor or level shifter. That is our quick starting
+      point. He has also seen occasional flashing with an ESP32-C3; the cause
+      could be signal voltage, timing or something else. It has not been pinned
+      down.
+    </p>
+    <p>
+      A circuit that works on your desk is a great start. Making it keep working
+      with different wires, power supplies and LEDs is your next engineering
+      challenge.
+    </p>
+    <details class="guide-detail">
+      <summary>Why can a 3.3 V Pico talk to 5 V lights?</summary>
+      <p>
+        A light does not need to see exactly 5 V to recognise a “high” signal.
+        Its input has a threshold, and many pixels recognise the Pico’s 3.3 V
+        signal. That threshold varies between LED types and conditions. A level
+        shifter gives the signal more room above it.{" "}
+        <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/logic-level">
+          Adafruit explores why direct drive often works
+        </a>
+        .
+      </p>
+      <p>
+        <strong>Try explaining it:</strong> a friend can hear you in a quiet
+        room. What changes when the room gets noisy? Electrical signals need
+        their own kind of breathing room.
+      </p>
+    </details>
+    <details class="guide-detail">
+      <summary>
+        Why can a long strip work, but a long lead cause trouble?
+      </summary>
+      <p>
+        Each WS2812B pixel reshapes the outgoing data for the next one. The Pico
+        has to reach the <strong>first pixel</strong>, rather than drive every
+        pixel input at once. So a long strip is different from a long wire
+        between Pico and first pixel. More pixels still need more power, and
+        sending a complete frame takes longer.
+      </p>
+      <p>
+        <strong>Spot the difference:</strong> draw 30 closely spaced pixels. Now
+        draw one pixel a long way from the Pico. Which drawing has the longer
+        first data lead? The{" "}
+        <a href="https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf">
+          Worldsemi WS2812B datasheet
+        </a>{" "}
+        describes the signal being reshaped at each pixel.
+      </p>
+    </details>
+    <details class="guide-detail">
+      <summary>
+        Want the numbers? An optional challenge with your helper
+      </summary>
+      <p>
+        An older{" "}
+        <a href="https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf">
+          WS2812B datasheet
+        </a>{" "}
+        specifies a high input of at least{" "}
+        <strong>0.7 × the LED supply voltage</strong>. At 5 V, that is 3.5 V. A
+        nominal 3.3 V output is 0.2 V below that guaranteed level, even if a
+        particular strip works. Other revisions and compatible LEDs have
+        different limits: read the sheet for your actual parts.
+      </p>
+      <p>
+        The gap between a driver’s guaranteed high output and a receiver’s
+        required high input is one part of its <strong>noise margin</strong>.
+        “It worked when we tried it” is useful evidence; a design margin helps
+        it keep working when conditions change.
+      </p>
+    </details>
+  </section>
+  <section class="wrap section narrow prose" id="glitches">
+    <p class="eyebrow">SOMETHING WEIRD? YOU HAVE A MYSTERY TO SOLVE.</p>
+    <h2>Be a glitch detective.</h2>
+    <p>
+      Pick one test. Predict what might happen. Change one thing, then check.
+      Ask your helper before changing the circuit; unplug both supplies first.
+    </p>
+    <details class="guide-detail">
+      <summary>Nothing lights up</summary>
+      <p>
+        Check that data reaches <strong>DIN</strong>, not DOUT, and that all
+        grounds join. Check GP16, pixel count and the selected output in
+        Configuration. Have your helper check power and the connections. Retry a
+        steady colour at low brightness.
+      </p>
+    </details>
+    <details class="guide-detail">
+      <summary>I asked for red and got green</summary>
+      <p>
+        Ask your helper to check the strip’s colour order in Configuration. Many
+        use GRB rather than RGB. Change only that setting and try again. A
+        colour mix-up is a different clue from random flashing.
+      </p>
+    </details>
+    <details class="guide-detail">
+      <summary>The lights flicker or flash</summary>
+      <p>
+        Keep the same steady-colour program. Try a shorter data lead and check
+        the ground connection. Then compare at a lower brightness. A
+        brightness-related change is a clue to investigate power and wiring; it
+        is not proof of the cause.
+      </p>
+      <p>
+        With your helper, compare direct drive with the level-shifter circuit
+        below. Improvement points towards a signal problem, but it does not
+        identify voltage as the only cause. Pulse timing, electrical noise,
+        power dips and software can all be involved.
+      </p>
+    </details>
+    <details class="guide-detail">
+      <summary>Helper’s investigation: power, voltage or timing?</summary>
+      <p>
+        Keep a short record: board, LED type, firmware build, pixel count,
+        brightness, lead length and result. Compare one change at a time. Check
+        the LED supply voltage at the strip under load. An oscilloscope at DIN,
+        referenced to the LED’s ground, can reveal voltage levels, ringing and
+        pulse widths. A multimeter cannot show those fast pulses; a logic
+        analyser alone cannot establish the analogue voltage margin.
+      </p>
+      <p>
+        Compare pulse and reset timing with the actual LED datasheet and
+        firmware output settings. The ESP32-C3 flashing is an open question, not
+        a confirmed voltage or timing fault. Share a reproducible example
+        through the{" "}
+        <a href="https://github.com/KajLights/lightvm/issues">
+          LightVM issue tracker
+        </a>
+        .
+      </p>
+    </details>
+  </section>
+  <section class="wrap section prose" id="make-it-reliable">
+    <p class="eyebrow">NEXT LEVEL / MAKE IT KEEP WORKING</p>
+    <h2>Give your circuit some breathing room.</h2>
+    <p>
+      Once you have made your first light, compare this version with the quick
+      one. What has been added? Your helper can build it with you when you want
+      a setup that is less fussy about its parts and surroundings.
+    </p>
+    <div class="subjects board-anatomy">
+      <article>
+        <h3>Level shifter</h3>
+        <p>
+          Raises the data signal from 3.3 V to about 5 V. It adds voltage
+          margin; it does not repair the wrong pulse timing.
+        </p>
+      </article>
+      <article>
+        <h3>Data resistor</h3>
+        <p>
+          A small resistor near the first pixel can soften signal spikes. It
+          does not turn 3.3 V into 5 V or fix a weak power supply.
+        </p>
+      </article>
+      <article>
+        <h3>Power and connections</h3>
+        <p>
+          The input capacitor helps with sudden power changes. Sound wiring,
+          common ground and a suitable supply still matter.
+        </p>
+      </article>
+    </div>
+    <figure class="wiring-figure">
+      <a
+        href={`${base}assets/hardware/pico2w-wiring.svg`}
+        aria-label="Open the upgraded wiring diagram at full size"
+      >
+        <img
+          src={`${base}assets/hardware/pico2w-wiring.svg`}
+          width="1280"
+          height="680"
+          alt="Upgraded circuit: Pico GP16 to 74AHCT125 level-shifter input, its output through a resistor to LED DIN. The 5 V supply powers shifter and LEDs. All grounds join. The capacitor remains across LED power."
+          loading="lazy"
+        />
+      </a>
+      <figcaption>
+        The same project, with a level shifter and data resistor added. Compare
+        the teal data path with the quick diagram.{" "}
+        <a href={`${base}assets/hardware/pico2w-wiring.svg`}>
+          Open the upgraded diagram at full size ↗
+        </a>
+      </figcaption>
+    </figure>
+    <details class="guide-detail">
+      <summary>Helper’s upgrade parts and connections</summary>
+      <p>
+        Add a <strong>74AHCT125-based level-shifter module</strong> with supply
+        decoupling, suitable for WS2812 signals, and a{" "}
+        <strong>330–470 Ω resistor</strong>. Check whether your interface
+        already includes the resistor. The capacitor from the quick circuit
+        stays across LED power.
+      </p>
+      <ol>
+        <li>
+          Unplug both supplies. Replace the direct wire with GP16 → module input
+          → module output → resistor → LED DIN. Put the resistor near the first
+          pixel.
+        </li>
+        <li>
+          Connect the module’s 5 V supply input to the external 5 V supply and
+          its GND to the shared ground.
+        </li>
+        <li>
+          Follow the module’s pin diagram. If it exposes active-low OE (output
+          enable), connect it to GND to enable the output; some modules already
+          do this. Follow its instructions for any unused inputs.
+        </li>
+        <li>
+          Check all connections, then use the same power-up order and the same
+          test pattern. Compare the result.
+        </li>
+      </ol>
+      <p>
+        The{" "}
+        <a href="https://www.ti.com/lit/ds/symlink/sn74ahct125.pdf">
+          TI AHCT125 datasheet
+        </a>{" "}
+        specifies a 2 V minimum high input at a 4.5–5.5 V supply. That is why
+        this family can accept a 3.3 V signal and drive a higher output. A
+        similarly named HC part or a slow bidirectional I²C shifter is not
+        automatically a substitute.
+      </p>
+      <p>
+        For longer or permanent installations, plan the power wiring and
+        connectors for the current, including suitable protection and power
+        injection where needed. Do not put a long strip’s current through
+        breadboard contacts. A level shifter is not a long-distance cable
+        system: shorten the first lead or use a suitable LED data
+        transmitter/receiver for longer cable runs. Start with{" "}
+        <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/best-practices">
+          Adafruit’s wiring guidance
+        </a>{" "}
+        and the strip manufacturer’s instructions.
+      </p>
+    </details>
+    <p>
+      <strong>One last challenge:</strong> choose one added part. Tell someone
+      what problem it helps with — and one problem it cannot fix.
+    </p>
   </section>
   <section class="wrap section" id="meet-the-boards">
     <div class="section-heading">
@@ -96,9 +581,9 @@ const parts = [
       </div>
     </div>
     <p class="section-lede">
-      The Pico 2 W is the example below. The other photos help you recognise
-      supported alternatives; use their own firmware and pin guide. A similar
-      shape does not mean the same wiring. Check the model printed on the board.
+      The Pico 2 W is our example. The other photos help you recognise supported
+      alternatives; use their own firmware and pin guide. A similar shape does
+      not mean the same wiring. Check the model printed on the board.
     </p>
     <BoardGallery />
     <div class="subjects board-anatomy">
@@ -149,246 +634,18 @@ const parts = [
     <p class="image-credit">
       Component images: Raspberry Pi Foundation, CC BY 4.0.{" "}
       <a href={`${base}image-credits/`}>Sources and licences</a>. These pictures
-      help identify types of parts; the list below specifies the values to buy.
-    </p>
-  </section>
-  <section class="wrap section narrow prose" id="parts">
-    <h2>The bits you’ll need</h2>
-    <ul class="parts-list">
-      <li>
-        <strong>
-          One Raspberry Pi Pico 2 W, preferably with fitted headers.
-        </strong>{" "}
-        Headers are the rows of metal pins that let you plug the board into a
-        breadboard. Use{" "}
-        <a href="https://www.raspberrypi.com/products/raspberry-pi-pico-2/">
-          Raspberry Pi’s retailer finder
-        </a>{" "}
-        and select the exact model. Already own a board? Check the{" "}
-        <a href={`${base}hardware/`}>other supported models</a>; their firmware
-        and pin names may differ.
-      </li>
-      <li>
-        <strong>A computer and a USB data cable.</strong> The Pico 2 W uses
-        Micro-USB; choose a cable that carries data, not a charge-only cable.
-        Desktop Chrome or Edge is the simplest starting point for the browser’s
-        USB device tools. Copying a Pico firmware file to its USB drive does not
-        need those browser tools.
-      </li>
-      <li>
-        <strong>A small 5 V WS2812B-compatible RGB strip or ring.</strong>{" "}
-        Around 8–16 pixels is a manageable first project. Check the voltage, LED
-        type and pixel count in the listing. Choose RGB, not RGBW or an ordinary
-        non-addressable strip, for this example. Fitted leads make connecting it
-        easier.
-      </li>
-      <li>
-        <strong>A breadboard, jumper wires and suitable LED connectors.</strong>{" "}
-        A breadboard holds temporary connections without soldering. If your
-        board has no headers or the LEDs have only bare pads, you will also need
-        headers or leads, a soldering iron and solder — or help fitting them.
-      </li>
-      <li>
-        <strong>A 3.3 V-to-5 V data level shifter.</strong> Use a ready-made
-        74AHCT125-based module with supply decoupling, suitable for WS2812 data,
-        and follow its pin and enable instructions. This raises the board’s data
-        signal to the level expected by 5 V LEDs.
-      </li>
-      <li>
-        <strong>
-          A 330–470 Ω data resistor and a 500–1000 µF capacitor rated at least
-          6.3 V.
-        </strong>{" "}
-        The resistor goes near the first LED’s data input; the capacitor goes
-        across the LED power input. Check whether your LED or interface module
-        already includes these parts.
-      </li>
-      <li>
-        <strong>
-          A regulated 5 V DC supply for the LEDs, with a suitable connector.
-        </strong>{" "}
-        Size it for the strip manufacturer’s maximum current for your pixel
-        count, including full white. Power the Pico from the computer’s USB for
-        this setup. The LEDs get their own power connection; the board’s GPIO
-        and 3V3 pins do not power the strip.
-      </li>
-    </ul>
-    <p>
-      The level shifter, resistor and capacitor follow{" "}
-      <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/best-practices">
-        Adafruit’s NeoPixel wiring guidance
-      </a>
-      . Its{" "}
-      <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels">
-        power guide
-      </a>{" "}
-      explains how to choose a supply. Start with a ready-made, enclosed
-      low-voltage adapter. A microphone, extra sensors, enclosure and Wi-Fi
-      setup can all wait until after your first pattern.
-    </p>
-  </section>
-  <section class="wrap section prose" id="connections">
-    <h2>Connect the first few lights</h2>
-    <p>
-      Unplug USB and the LED supply while making connections. Use the{" "}
-      <a href="https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html">
-        official Pico pin diagram
-      </a>{" "}
-      and your level-shifter module’s instructions. This example uses{" "}
-      <strong>GP16</strong>, the signal name printed in the pin diagram, not
-      physical pin number 16.
-    </p>
-    <figure class="wiring-figure">
-      <a
-        href={`${base}assets/hardware/pico2w-wiring.svg`}
-        aria-label="Open the wiring diagram at full size"
-      >
-        <img
-          src={`${base}assets/hardware/pico2w-wiring.svg`}
-          width="1280"
-          height="680"
-          alt="Computer to Pico by USB. Pico GP16 to level shifter, then resistor, then LED DIN. A separate 5 V supply powers the shifter and LEDs; all grounds join. Capacitor positive goes to LED 5 V and negative to ground."
-          loading="lazy"
-        />
-      </a>
-      <figcaption>
-        Read the labels as well as the colours: purple is USB, teal is LED data,
-        red is +5 V and dark grey is ground. This shows connections, not
-        breadboard holes or physical pin positions.{" "}
-        <a href={`${base}assets/hardware/pico2w-wiring.svg`}>
-          Open the full-size diagram ↗
-        </a>
-      </figcaption>
-    </figure>
-    <div class="concept-note">
-      <h3>Three things to notice</h3>
-      <p>
-        The strip’s power comes from the 5 V supply. Its instructions come from
-        GP16 through the level shifter. Ground gives the board, shifter and LEDs
-        a shared electrical reference. The capacitor sits across the power
-        input; the resistor sits in the data path.
-      </p>
-    </div>
-    <table class="wiring-table">
-      <caption>Pico 2 W with a separate 5 V LED supply</caption>
-      <thead>
-        <tr>
-          <th scope="col">From</th>
-          <th scope="col">Connect to</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Pico GP16</th>
-          <td>The level shifter’s data input.</td>
-        </tr>
-        <tr>
-          <th scope="row">Level shifter’s output</th>
-          <td>
-            The data resistor, then the LEDs’ DIN (data in). Follow the arrows
-            along the strip away from the board.
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Module output enable (OE), if exposed</th>
-          <td>
-            The 74AHCT125 enable is active-low: connect it to GND. Some modules
-            already do this. Follow the module’s own pin diagram.
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">External 5 V supply +</th>
-          <td>The LEDs’ 5 V input and the level shifter’s 5 V supply input.</td>
-        </tr>
-        <tr>
-          <th scope="row">External supply − / ground</th>
-          <td>
-            The LEDs’ ground, level shifter’s ground and a Pico GND pin, all
-            connected together.
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Capacitor</th>
-          <td>
-            Across the LED power input: + to 5 V and − to ground. Observe the
-            polarity marked on it.
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">Pico Micro-USB</th>
-          <td>Your computer, for the board’s power and data.</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>
-      Keep the data lead short. In this two-supply setup, join the grounds but
-      leave external 5 V disconnected from the Pico’s power and GPIO pins. Check
-      connections and capacitor polarity before powering up. Switch on the LED
-      supply before connecting the Pico’s USB; disconnect USB before switching
-      off the LED supply.
-    </p>
-  </section>
-  <section class="wrap section narrow prose" id="first-pattern">
-    <h2>From assembled parts to your first pattern</h2>
-    <ol>
-      <li>
-        <strong>Install firmware for the exact board.</strong> Follow{" "}
-        <a href={`${base}install/`}>Set up a device</a> if an approved release
-        is available, or the developer guide linked above. For Pico 2 W, hold
-        BOOTSEL while connecting USB and copy its LightVM UF2 file to the{" "}
-        <strong>RP2350</strong> drive. A Pico W firmware file will not work on a
-        Pico 2 W. Firmware installation may erase existing experiments.
-      </li>
-      <li>
-        <strong>
-          Connect in the lighting editor and configure the output.
-        </strong>{" "}
-        Open the{" "}
-        <a href="https://kajlights.github.io/lightvm/">LightVM editor</a>,
-        select the board’s USB connection, and open Configuration. Add a WS2812B
-        output with pin <strong>GP16</strong>, your actual pixel count and the
-        strip’s colour order (commonly GRB). Set a low brightness limit for the
-        first test and save the configuration.
-      </li>
-      <li>
-        <strong>Try a simple colour, then a pattern.</strong> Preview the Color
-        example on the board. If red appears green, check colour order. If
-        nothing lights up, unplug power and check the data direction, shared
-        ground and chosen pin. Once it works, try Rainbow or a beginner lesson
-        and change one thing at a time.
-      </li>
-      <li>
-        <strong>Keep what you make.</strong> Save your editable source to your
-        computer. Deploy an animation and save a device preset when you want the
-        board to keep it; choose its startup behaviour in Configuration if you
-        want it to run again after power is restored.
-      </li>
-    </ol>
-    <p>
-      Need help with the editor? The{" "}
-      <a href="https://github.com/KajLights/lightvm/blob/main/docs/web-editor.md">
-        workspace guide
-      </a>{" "}
-      explains its controls. If you find a gap in this build guide,{" "}
-      <a href="https://github.com/KajLights/KajLights.github.io/issues">
-        share the model, parts and step you reached
-      </a>
-      . That is useful feedback while the project is finding its feet.
+      help identify types of parts; the helper’s setup and upgrade notes specify
+      the values to buy.
     </p>
   </section>
   <section class="wrap section narrow prose">
-    <h2>Now investigate what you made</h2>
+    <h2>What will your next light do?</h2>
     <p>
-      Predict what will change when you alter the timing or colour. Trace the
-      instruction from your program through GP16 to the first pixel. Explain why
-      the power wire still matters when the program is correct.
-    </p>
-    <p>
-      When you are ready, extend the same investigation to messages over USB,
-      Wi-Fi or MQTT. Each connection has rules and limits to understand.
+      A secret message? A countdown? A signal from another room? Pick an idea,
+      try a small version, and find out what you need to learn next.
     </p>
     <a class="text-link" href={`${base}learn/`}>
-      Continue with electronics, computing and communications →
+      More things to try →
     </a>
   </section>
 </Site>

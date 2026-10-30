@@ -65,15 +65,21 @@ const componentsSource = "https://github.com/raspberrypilearning/components";
       unchanged apart from display size. The capacitor picture illustrates the
       type of part; the build guide specifies the required rating.
     </p>
-    <h2>Wiring diagram</h2>
+    <h2>Wiring diagrams</h2>
     <p>
-      The connection diagram is drawn for KajLights, using the Pico pin
-      documentation and{" "}
+      The quick and upgraded connection diagrams are drawn for KajLights, using
+      the Pico pin documentation and{" "}
       <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/best-practices">
         Adafruit’s NeoPixel wiring guidance
       </a>{" "}
-      as technical references. It shows functional connections, not a physical
-      breadboard layout.
+      and{" "}
+      <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/logic-level">
+        discussion of direct drive
+      </a>{" "}
+      as technical references. They show functional connections, not physical
+      breadboard layouts. The quick route reflects Kaj’s experience driving
+      strips directly from Picos; the later circuit adds a data resistor and
+      level shifter.
     </p>
   </section>
 </Site>
