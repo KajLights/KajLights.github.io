@@ -7,7 +7,7 @@ const parts = [
     file: "neopixel.png",
     name: "An addressable RGB pixel",
     description:
-      "A single pixel shown close up. For this build, buy a prewired strip or ring containing 8–16 pixels; the data travels from one to the next.",
+      "A single pixel shown close up. Use a prewired 5 V RGB strip or ring; the data travels from one pixel to the next.",
   },
   {
     file: "breadboard.png",
@@ -31,7 +31,7 @@ const parts = [
     file: "capacitor.png",
     name: "Electrolytic capacitor",
     description:
-      "Shape example only: buy 500–1000 µF, rated at least 6.3 V. The stripe marks the negative side. Check the value and polarity on your own part.",
+      "For the later power upgrade: a capacitor helps smooth sudden power changes. Choose 500–1000 µF, rated at least 6.3 V. The stripe marks the negative side; check your own part.",
   },
 ];
 ---
@@ -45,28 +45,22 @@ const parts = [
     <h1>Make a light glow.</h1>
     <p class="intro">Then make it your favourite colour.</p>
     <p>
-      You can try the lights on screen right now. For real lights, build with an
-      adult who can help get the board and power ready. You do the choosing,
-      changing and discovering.
+      A Pico, an LED strip and three wires. Your USB cable powers the board and
+      the lights. Build with an adult who can help prepare the board and check
+      the connections, then choose a colour and make it yours.
     </p>
     <div class="actions">
-      <a class="button dark" href="https://kajlights.github.io/lightvm/">
-        Try the lights on screen ↗
-      </a>
-      <a class="text-link" href="#parts">
+      <a class="button dark" href="#parts">
         Build with a Pico →
       </a>
     </div>
-    <p class="small">
-      On screen: choose a lesson under <strong>Learn with lights</strong>, then
-      open <strong>Try it here → Start preview</strong>.
-    </p>
     <nav class="guide-links" aria-label="In this build guide">
       <a href="#parts">Get the bits</a>
       <a href="#connections">Connect</a>
       <a href="#first-pattern">First colour</a>
       <a href="#try-next">Try a challenge</a>
       <a href="#meet-the-boards">Board pictures</a>
+      <a href="#more-power">More lights</a>
       <a href="#make-it-reliable">Make it reliable</a>
     </nav>
   </section>
@@ -74,8 +68,8 @@ const parts = [
     <div class="testing-note">
       <p class="eyebrow">A WORKSHOP IN PROGRESS</p>
       <p>
-        KajLights is in early testing, with bugs and gaps still to find. Try the
-        browser first. Before buying hardware, your helper should check the{" "}
+        KajLights is in early testing, with bugs and gaps still to find. Before
+        buying hardware, your helper should check the{" "}
         <a href={`${base}releases/`}>firmware catalogue</a>: if there is no
         suitable download, setting up a board currently needs developer tools.
       </p>
@@ -91,11 +85,11 @@ const parts = [
       </li>
       <li>
         <strong>A computer and a Micro-USB data cable.</strong> The cable powers
-        the Pico and lets you talk to it.
+        the Pico and lights, and lets you talk to the board.
       </li>
       <li>
-        <strong>A short 5 V RGB LED strip or ring.</strong> Start with 8–16
-        WS2812B-compatible pixels and fitted wires.
+        <strong>A 5 V RGB LED strip or ring.</strong> Choose WS2812B-compatible
+        pixels with fitted wires.
       </li>
       <li>
         <strong>
@@ -103,15 +97,11 @@ const parts = [
         </strong>{" "}
         Ask your helper to fit any parts that need soldering.
       </li>
-      <li>
-        <strong>A suitable 5 V LED power supply and input capacitor.</strong>{" "}
-        Your helper checks these before you switch on.
-      </li>
     </ul>
     <p>
-      The quick Pico route sends data straight to the lights. You do not need to
-      start with a level shifter or data resistor. Those become useful things to
-      investigate <a href="#make-it-reliable">once it works</a>.
+      That is enough to get started: USB supplies the power, and the Pico sends
+      colour instructions straight to the lights. Extra power and signal parts
+      come <a href="#more-power">later, as your project grows</a>.
     </p>
     <div class="guide-links">
       <a href="#meet-the-boards">What do the boards look like?</a>
@@ -142,33 +132,44 @@ const parts = [
       <p>
         In the <a href="https://kajlights.github.io/lightvm/">LightVM editor</a>
         , connect over USB and open Configuration. Set up a WS2812B output on{" "}
-        <strong>GP16</strong> with the actual pixel count, a low brightness
-        limit and the strip’s colour order (commonly GRB). Save it and try a
-        steady colour. Desktop Chrome or Edge supports the browser USB tools;
-        use a data-capable cable.
+        <strong>GP16</strong> with the actual pixel count and the strip’s colour
+        order (commonly GRB). Set a brightness limit to suit your USB source and
+        strip. Save it and try a steady colour. Desktop Chrome or Edge supports
+        the browser USB tools; use a data-capable cable.
       </p>
       <p>
         Choose <strong>5 V RGB</strong> pixels, not RGBW or a non-addressable
-        strip. Use a ready-made enclosed 5 V DC adapter and wiring rated for the
-        strip’s maximum current, including full white. Fit a{" "}
-        <strong>500–1000 µF capacitor rated at least 6.3 V</strong> across the
-        LED power input, unless already provided. Its negative stripe goes to
-        ground. The{" "}
-        <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels">
-          Adafruit power guide
-        </a>{" "}
-        explains sizing the supply. A breadboard is for this small starter
-        circuit, not carrying the current of a long strip.
+        strip. Check the available USB power and the rating of the cable and
+        connections, allowing for both Pico and LEDs. A moving pattern and all
+        LEDs at full-white brightness can need very different amounts of power.
+        Keep full-white tests within that budget; the brightness setting is not
+        an electrical current limiter. Use the{" "}
+        <a href="#more-power">power upgrade</a> when the project needs more than
+        USB can supply.
       </p>
     </details>
   </section>
   <section class="wrap section prose" id="connections">
-    <p class="eyebrow">2 / ONE WIRE CARRIES YOUR COLOUR INSTRUCTIONS</p>
+    <p class="eyebrow">2 / THREE WIRES, THEN USB</p>
     <h2>Connect the Pico straight to the lights.</h2>
     <p>
-      With both power sources unplugged, connect <strong>GP16 to DIN</strong> —
-      “data in” on the first LED. Follow the arrows along the strip. Your helper
-      checks power, the capacitor and the shared ground before switching on.
+      Leave USB unplugged while you connect the wires. Use the input end of the
+      strip: its arrows point away from the Pico.
+    </p>
+    <ol>
+      <li>
+        <strong>VBUS → 5V:</strong> power for the lights.
+      </li>
+      <li>
+        <strong>GND → GND:</strong> the return path for power.
+      </li>
+      <li>
+        <strong>GP16 → DIN:</strong> the colour instructions (“data in”).
+      </li>
+    </ol>
+    <p>
+      Check the three wires with your helper, then plug the Pico into your
+      computer. One USB cable powers the whole build.
     </p>
     <figure class="wiring-figure">
       <a
@@ -179,14 +180,14 @@ const parts = [
           src={`${base}assets/hardware/pico2w-direct.svg`}
           width="1280"
           height="680"
-          alt="Computer powers Pico by USB. GP16 connects straight to the first LED DIN, without a resistor or level shifter. The separate 5 V supply powers the LEDs. Pico, LEDs and supply share ground. Capacitor positive goes to LED 5 V, negative to ground."
+          alt="Computer connects to Pico 2 W by USB. Three wires connect the Pico to the LED strip: VBUS to 5 V, GND to GND, and GP16 directly to DIN. No separate power supply, capacitor, resistor or level shifter."
           loading="lazy"
         />
       </a>
       <figcaption>
-        Quick Pico setup: data goes straight to DIN. Purple is USB, teal is
-        data, red is +5 V and grey is ground. This shows connections, not
-        physical pin positions.{" "}
+        The USB build: red is power from VBUS, grey is ground and teal is data.
+        Purple is the USB cable. This shows connections, not physical pin
+        positions.{" "}
         <a href={`${base}assets/hardware/pico2w-direct.svg`}>
           Open the quick diagram at full size ↗
         </a>
@@ -200,13 +201,14 @@ const parts = [
       </p>
     </div>
     <details class="guide-detail">
-      <summary>Helper’s wiring check: pins, power and switch-on order</summary>
+      <summary>Helper’s wiring check: finding the right pins</summary>
       <p>
-        Keep the lead to the first pixel short. Use the{" "}
-        <a href="https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html">
-          official Pico pin diagram
+        On a Pico 2 W, <strong>VBUS is physical pin 40</strong>, GP16 is pin 21,
+        and GND is available at several pins, including pin 23. Check the
+        <a href="https://datasheets.raspberrypi.com/picow/pico-2-w-datasheet.pdf">
+          official Pico 2 W pin diagram
         </a>
-        : GP16 is a signal name, <strong>not physical pin 16</strong>.
+        : GP16 is a signal name, not physical pin 16. Keep the data lead short.
       </p>
       <table class="wiring-table">
         <caption>Quick Pico 2 W connections</caption>
@@ -218,34 +220,29 @@ const parts = [
         </thead>
         <tbody>
           <tr>
+            <th scope="row">Pico VBUS</th>
+            <td>LED strip 5 V input.</td>
+          </tr>
+          <tr>
+            <th scope="row">Pico GND</th>
+            <td>LED strip GND.</td>
+          </tr>
+          <tr>
             <th scope="row">Pico GP16</th>
             <td>First LED DIN, directly.</td>
           </tr>
           <tr>
-            <th scope="row">External supply +5 V</th>
-            <td>LED strip 5 V input.</td>
-          </tr>
-          <tr>
-            <th scope="row">External supply − / GND</th>
-            <td>LED ground and a Pico GND pin, joined together.</td>
-          </tr>
-          <tr>
-            <th scope="row">Input capacitor</th>
-            <td>
-              Across LED power: + to 5 V, − to ground. Check its polarity.
-            </td>
-          </tr>
-          <tr>
             <th scope="row">Pico Micro-USB</th>
-            <td>Computer, for the Pico’s power and data.</td>
+            <td>Computer, for power and data.</td>
           </tr>
         </tbody>
       </table>
       <p>
-        In this setup, external 5 V stays off the Pico’s power and GPIO pins.
-        GPIO and 3V3 do not power the strip. Check for loose wires and shorts.
-        Power the LEDs before connecting the Pico’s USB; disconnect USB before
-        switching the LED supply off. Unplug both before changing connections.
+        Use <strong>VBUS</strong> for the LED power wire, not VSYS or 3V3. VBUS
+        takes power directly from USB; VSYS is after a diode that drops some
+        voltage. The LEDs do not draw their power through the Pico’s 3.3 V
+        regulator. VBUS still shares the USB source’s power budget. Unplug USB
+        before changing wires, and check for loose connections or shorts.
       </p>
     </details>
   </section>
@@ -262,8 +259,8 @@ const parts = [
       </li>
       <li>
         Choose your connected LED output and press{" "}
-        <strong>Preview on device</strong>. Start dim. Your lights should show
-        one steady colour.
+        <strong>Preview on device</strong>. Your lights should show one steady
+        colour.
       </li>
       <li>
         Open <strong>Preview settings &amp; inputs</strong>, then{" "}
@@ -274,10 +271,6 @@ const parts = [
     <p>
       <strong>You made a computer change something in the real world.</strong>{" "}
       Now give it another job.
-    </p>
-    <p class="small">
-      Using the screen instead? Use <strong>Try it here → Start preview</strong>
-      . You can join in with the colour and pattern challenges below.
     </p>
     <details class="guide-detail">
       <summary>Keep what you made</summary>
@@ -319,12 +312,101 @@ const parts = [
       <article>
         <h3>Be a wire detective</h3>
         <p>
-          Unplug both supplies. Trace the data wire from Pico to first pixel.
-          Which wires carry the power? Why are they separate?
+          Unplug USB. Trace the data wire from Pico to first pixel. Which wires
+          carry the power? Why are they separate?
         </p>
         <p>Explore: a circuit and a program need each other.</p>
       </article>
     </div>
+  </section>
+  <section class="wrap section prose" id="more-power">
+    <p class="eyebrow">NEXT EXPERIMENT / GROW YOUR LIGHTS</p>
+    <h2>Give the lights their own power.</h2>
+    <p>
+      Kaj runs a 200-LED strip from a Pico’s USB VBUS connection. There is no
+      single “USB can run this many LEDs” number: the colours, brightness and
+      pattern matter too. As you add more lights or want them brighter, a
+      separate supply gives the project more power to play with.
+    </p>
+    <p>
+      For this upgrade, add a <strong>5 V LED power supply</strong> and a
+      <strong>capacitor</strong>. The supply provides the extra power. The
+      capacitor holds a little in reserve for sudden changes. Your helper
+      chooses and connects them with you.
+    </p>
+    <p>
+      <strong>Unplug all power first. Remove the VBUS-to-strip wire.</strong>
+      The new supply powers the lights instead; keep the Pico on USB. Join the
+      grounds, but never join the new supply’s +5 V to VBUS.
+    </p>
+    <figure class="wiring-figure">
+      <a
+        href={`${base}assets/hardware/pico2w-power.svg`}
+        aria-label="Open the separate-power wiring diagram at full size"
+      >
+        <img
+          src={`${base}assets/hardware/pico2w-power.svg`}
+          width="1280"
+          height="680"
+          alt="Power upgrade: computer powers Pico by USB; GP16 still goes directly to LED DIN. A separate 5 V supply powers the LEDs, with a capacitor across their power input. All grounds join. The VBUS-to-LED wire is removed."
+          loading="lazy"
+        />
+      </a>
+      <figcaption>
+        The colour instructions take the same route. Only the power wiring
+        changes.
+        <a href={`${base}assets/hardware/pico2w-power.svg`}>
+          Open the power diagram at full size ↗
+        </a>
+      </figcaption>
+    </figure>
+    <div class="concept-note">
+      <h3>Can the same strip need different amounts of power?</h3>
+      <p>
+        Predict which needs more: one dot travelling along the strip, or every
+        light glowing together. Try both within the brightness your helper has
+        checked. You changed the program — and changed what the circuit needs.
+      </p>
+    </div>
+    <details class="guide-detail">
+      <summary>Helper’s power upgrade: parts and connections</summary>
+      <p>
+        Choose a ready-made enclosed, regulated <strong>5 V DC supply</strong>
+        and wiring rated for the intended LED load, including full white if that
+        will be used. Fit a{" "}
+        <strong>500–1000 µF capacitor rated at least 6.3 V</strong> across the
+        strip’s power input unless already provided: positive to 5 V, negative
+        (striped side) to GND. It helps with brief power changes; it cannot make
+        an undersized supply powerful enough.
+      </p>
+      <ol>
+        <li>
+          Disconnect USB and the new supply. Remove the VBUS-to-LED power wire.
+        </li>
+        <li>
+          Connect supply +5 V to LED 5 V. Connect supply − / GND, LED GND and
+          Pico GND together.
+        </li>
+        <li>
+          Keep GP16 connected to DIN. Add the capacitor across LED power with
+          the correct polarity.
+        </li>
+        <li>
+          Check the connections. Turn on LED power before connecting Pico USB;
+          disconnect USB before switching LED power off.
+        </li>
+      </ol>
+      <p>
+        Keep the external +5 V off the Pico’s power and GPIO pins in this setup.
+        Plan suitable connectors, wire sizes and protection; do not send a long
+        strip’s current through breadboard contacts. Longer strips may need
+        power at more than one point. The
+        <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels">
+          Adafruit power guide
+        </a>
+        explains how to size and distribute power.
+      </p>
+    </details>
   </section>
   <section class="wrap section narrow prose" id="why-direct-works">
     <p class="eyebrow">A QUESTION TO COME BACK TO</p>
@@ -408,7 +490,7 @@ const parts = [
     <h2>Be a glitch detective.</h2>
     <p>
       Pick one test. Predict what might happen. Change one thing, then check.
-      Ask your helper before changing the circuit; unplug both supplies first.
+      Ask your helper before changing the circuit; unplug all power first.
     </p>
     <details class="guide-detail">
       <summary>Nothing lights up</summary>
@@ -468,9 +550,9 @@ const parts = [
     <p class="eyebrow">NEXT LEVEL / MAKE IT KEEP WORKING</p>
     <h2>Give your circuit some breathing room.</h2>
     <p>
-      Once you have made your first light, compare this version with the quick
-      one. What has been added? Your helper can build it with you when you want
-      a setup that is less fussy about its parts and surroundings.
+      After the power experiment, there is another thing to investigate: the
+      colour instructions. This version adds two parts to help the signal reach
+      the first light reliably. Compare its data wire with the earlier diagrams.
     </p>
     <div class="subjects board-anatomy">
       <article>
@@ -509,8 +591,8 @@ const parts = [
         />
       </a>
       <figcaption>
-        The same project, with a level shifter and data resistor added. Compare
-        the teal data path with the quick diagram.{" "}
+        The separate-power build, with a level shifter and data resistor added.
+        Compare the teal data path with the earlier diagrams.{" "}
         <a href={`${base}assets/hardware/pico2w-wiring.svg`}>
           Open the upgraded diagram at full size ↗
         </a>
@@ -522,8 +604,9 @@ const parts = [
         Add a <strong>74AHCT125-based level-shifter module</strong> with supply
         decoupling, suitable for WS2812 signals, and a{" "}
         <strong>330–470 Ω resistor</strong>. Check whether your interface
-        already includes the resistor. The capacitor from the quick circuit
-        stays across LED power.
+        already includes the resistor. Keep the separate supply and capacitor
+        from the <a href="#more-power">power upgrade</a>, with VBUS disconnected
+        from the strip.
       </p>
       <ol>
         <li>

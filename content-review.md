@@ -24,16 +24,25 @@ The first reward is a light and a colour change, followed by short, playful
 challenges. Buying, firmware preparation, electrical specifications and diagnostic
 instruments belong in optional helper sections, not in the first activity.
 
-The quick Pico 2 W circuit sends GP16 straight to LED DIN, with no data resistor
-or level shifter. It retains separate 5 V LED power, common ground and the power
-input capacitor. Kaj’s successful direct drive, including long strips, is reported
-as experience. His occasional ESP32-C3 flashing has no confirmed cause. Optional
-investigations distinguish the first data lead from the regenerated pixel chain,
-voltage margin from timing, and observations from guarantees. The later diagram
-adds a 74AHCT125 module and data resistor, with a purpose for each part.
+The first Pico 2 W build is three wires: VBUS to LED 5 V, GND to GND and GP16
+straight to DIN. USB powers both board and LEDs; no separate supply, capacitor,
+data resistor or level shifter is in the starter parts list. The build page stays
+focused on building hardware and has no device-free preview detour.
+
+Kaj’s working 200-LED USB/VBUS setup is reported as experience, not a universal
+USB current or pixel-count promise. The starter no longer imposes an arbitrary
+8–16-pixel limit. Helper notes cover the source/cable/connection budget and the
+large difference between patterns and full white. The later power experiment adds
+a separate 5 V supply and capacitor, explicitly removing the VBUS-to-LED wire to
+avoid connecting the two supplies. A third diagram adds signal upgrades.
+
+His occasional ESP32-C3 flashing has no confirmed cause. Optional investigations
+distinguish the first data lead from the regenerated pixel chain, voltage margin
+from timing, and observations from guarantees. A 74AHCT125 module and data resistor
+have a purpose to explore once the first build works.
 
 Raspberry Pi documentation, Worldsemi’s WS2812B datasheet, TI’s AHCT125 datasheet
-and Adafruit’s direct-drive/power guidance support these explanations. Both
+and Adafruit’s direct-drive/power guidance support these explanations. All three
 images show functional connections, not physical pin locations. This content
 update does not constitute physical acceptance of a board, firmware build or
 installation method.

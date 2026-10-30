@@ -52,9 +52,11 @@ const base = import.meta.env.BASE_URL;
         bring power? Which one carries the colour instructions?
       </li>
       <li>
-        Compare the <a href={`${base}build/#connections`}>quick circuit</a> with
-        the <a href={`${base}build/#make-it-reliable`}>upgraded one</a>. What
-        has been added? Pick one part and find out which problem it helps solve.
+        Compare the{" "}
+        <a href={`${base}build/#connections`}>USB-powered circuit</a>
+        with the <a href={`${base}build/#more-power`}>separate-power version</a>
+        . What changed? Why might one moving dot need less power than every
+        light glowing at once?
       </li>
       <li>
         Something flashing when it should stay still? Choose one test from the{" "}
@@ -64,8 +66,7 @@ const base = import.meta.env.BASE_URL;
     </ul>
     <p>
       You are finding out how power and information work together. The quick
-      Pico route has no data resistor or level shifter. Once it glows, you can
-      explore{" "}
+      Pico route uses USB power and three wires. Once it glows, you can explore{" "}
       <a href={`${base}build/#why-direct-works`}>
         why it works and when extra parts help
       </a>
