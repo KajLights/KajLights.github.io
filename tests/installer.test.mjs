@@ -48,6 +48,7 @@ test("policy, feature, geometry, identity and tooling checks fail closed", () =>
     "clean_local_install",
   );
   const variants = [
+    ["audio requirement", (c) => (c.features = ["audio_subscriptions"])],
     ["reported variant", (c) => (c.device.hardware.variant = "unregistered")],
     ["wrong model", (c) => (c.board.id = "pico")],
     ["unconfirmed", (c) => (c.confirmedModel = false)],

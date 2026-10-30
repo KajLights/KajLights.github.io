@@ -9,7 +9,8 @@ export default function Catalogue() {
     [board, setBoard] = useState(""),
     [pre, setPre] = useState(false),
     [withdrawn, setWithdrawn] = useState(false),
-    [mqtt, setMqtt] = useState(false);
+    [mqtt, setMqtt] = useState(false),
+    [audio, setAudio] = useState(false);
   async function refresh() {
     try {
       setCatalogue(await loadCatalogue());
@@ -26,7 +27,10 @@ export default function Catalogue() {
         board,
         prereleases: pre,
         withdrawn,
-        features: mqtt ? ["mqtt"] : [],
+        features: [
+          ...(mqtt ? ["mqtt", "home_assistant"] : []),
+          ...(audio ? ["audio_subscriptions"] : []),
+        ],
       })
     : [];
   return (
@@ -67,6 +71,14 @@ export default function Catalogue() {
                 onChange={(e) => setMqtt(e.target.checked)}
               />
               MQTT & Home Assistant
+            </label>
+            <label className="check">
+              <input
+                type="checkbox"
+                checked={audio}
+                onChange={(e) => setAudio(e.target.checked)}
+              />
+              UDP audio subscriptions
             </label>
             <label className="check">
               <input

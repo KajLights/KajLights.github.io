@@ -878,12 +878,38 @@ export default function Workspace() {
                       disabled={!!busy}
                       onChange={(e) =>
                         change(() => {
-                          setFeatures(e.target.checked ? ["mqtt"] : []);
+                          setFeatures((old) => [
+                            ...old.filter(
+                              (f) => !["mqtt", "home_assistant"].includes(f),
+                            ),
+                            ...(e.target.checked
+                              ? ["mqtt", "home_assistant"]
+                              : []),
+                          ]);
                           setSelected("");
                         })
                       }
                     />
                     Require MQTT & Home Assistant
+                  </label>
+                  <label className="check">
+                    <input
+                      type="checkbox"
+                      checked={features.includes("audio_subscriptions")}
+                      disabled={!!busy}
+                      onChange={(e) =>
+                        change(() => {
+                          setFeatures((old) => [
+                            ...old.filter((f) => f !== "audio_subscriptions"),
+                            ...(e.target.checked
+                              ? ["audio_subscriptions"]
+                              : []),
+                          ]);
+                          setSelected("");
+                        })
+                      }
+                    />
+                    Require UDP audio subscriptions
                   </label>
                   <label className="check">
                     <input
