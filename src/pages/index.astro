@@ -19,18 +19,20 @@ const pattern = [
         <em>Big ideas.</em>
       </h1>
       <p class="intro">
-        Make a pattern. Follow a message. Change a rule and see what happens.
+        KajLights is an experimental project for learning and making with
+        programmable lights, sound and small connected devices.
       </p>
       <p>
-        Explore computing through light, sound and connected objects. Start with
-        curiosity; bring a board when you’re ready.
+        Turn a few lines of code into a moving colour pattern. Change a rule and
+        see what happens. Start in your browser, then take your ideas into the
+        physical world when you’re ready.
       </p>
       <div class="actions">
-        <a class="button dark" href={`${base}studio/#/devices`}>
-          Open your devices <span aria-hidden="true">↗</span>
+        <a class="button dark" href="https://kajlights.github.io/lightvm/">
+          Try without a board <span aria-hidden="true">↗</span>
         </a>
-        <a class="text-link" href="https://kajlights.github.io/lightvm/">
-          Try the lighting playground ↗
+        <a class="text-link" href={`${base}build/`}>
+          Build your first lights →
         </a>
       </div>
     </div>
@@ -54,6 +56,54 @@ const pattern = [
         The interesting part is finding out why.
       </figcaption>
     </figure>
+  </section>
+  <aside class="wrap" aria-labelledby="early-testing">
+    <div class="testing-note">
+      <p class="eyebrow">A WORKSHOP IN PROGRESS</p>
+      <h2 id="early-testing">Early testing. A few rough edges included.</h2>
+      <p>
+        KajLights is still a proof of concept. Expect bugs, missing features and
+        gaps in the instructions — sometimes all three at once. Things will
+        change, and a board may need wiping and setting up again. This is a
+        place to experiment, rather than a finished kit or a dependable
+        home-lighting system just yet.
+      </p>
+      <p>
+        Something confusing or broken?{" "}
+        <a href="https://github.com/KajLights/KajLights.github.io/issues">
+          Tell us what you tried
+        </a>
+        . Finding the rough edges helps make the next person’s first steps
+        easier.
+      </p>
+    </div>
+  </aside>
+  <section class="wrap section split">
+    <div>
+      <p class="eyebrow">WHY LIGHTS?</p>
+      <h2>Make computing something you can see.</h2>
+    </div>
+    <div>
+      <p>
+        A loop becomes a chase of lights. A changing number becomes a colour. A
+        message from another device becomes something you can notice. The aim is
+        to make programming, electronics and connected systems approachable
+        through small experiments with visible results.
+      </p>
+      <p>
+        LightVM is the lighting part of the project: write patterns using
+        Python, JavaScript or visual blocks, preview them on screen, and run
+        them on a small controller. The companion kaj-fi project explores sound
+        analysis and sharing audio features between devices; its public firmware
+        is not yet available.
+      </p>
+      <p>
+        You can play with an example, follow a lesson or make something of your
+        own. You don’t need a board or an account to try the browser lighting
+        playground. Teachers and curious makers are welcome too; the learning
+        material is still being developed and tested.
+      </p>
+    </div>
   </section>
   <section class="wrap section">
     <div class="section-heading">
@@ -100,59 +150,96 @@ const pattern = [
       </article>
     </div>
   </section>
+  <section class="wrap section split" id="what-is-a-board">
+    <div>
+      <p class="eyebrow">FROM SCREEN TO REAL LIGHTS</p>
+      <h2>What’s a board, anyway?</h2>
+      <p>
+        A board is a small circuit board with a programmable chip called a
+        microcontroller, a USB socket and connection pins. It runs your lighting
+        program and sends instructions to the LEDs. The LED strip is a separate
+        part: the board is the controller, and the lights show the result.
+      </p>
+    </div>
+    <div>
+      <h3>Buy the board. Make the project.</h3>
+      <p>
+        You don’t need to design a circuit board from scratch. Start with an
+        off-the-shelf Raspberry Pi Pico W or Pico 2 W, or one of the supported
+        Seeed XIAO ESP32 models. You can buy these from electronics suppliers;
+        our hardware guide links to the manufacturers and their retailers.
+      </p>
+      <p>
+        “Build your own” means connecting that board to a few LEDs and
+        installing LightVM, the software that runs on it. Choose the exact model
+        in the guide and check firmware availability before buying: not every
+        board with a similar name can use the same software.
+      </p>
+      <div class="actions">
+        <a class="text-link" href={`${base}hardware/#find-a-board`}>
+          Find a board →
+        </a>
+        <a class="text-link" href={`${base}build/#parts`}>
+          See the starter parts list →
+        </a>
+      </div>
+    </div>
+  </section>
   <section class="setup-band">
     <div class="wrap split">
       <div>
-        <p class="eyebrow">WHEN YOU HAVE A BOARD</p>
+        <p class="eyebrow">BUILD YOUR OWN BOARD SETUP</p>
         <h2>
-          A home for
+          Your first
           <br />
-          your little systems.
+          little light project.
         </h2>
         <p>
-          Name your devices, inspect their features, and choose firmware made
-          for their exact hardware.
+          Start small: a supported board, a USB data cable, a short addressable
+          LED strip or ring, connecting wires and suitable power. Our build
+          guide covers the complete parts list, signal components and first
+          connections.
         </p>
       </div>
       <ol class="journey">
         <li>
           <span>1</span>
           <div>
-            <h3>Identify</h3>
+            <h3>Gather the bits</h3>
             <p>
-              Read the model printed on the board, or connect an existing
-              KajLights device.
+              Choose an exact board model and check its firmware options. Use
+              parts with fitted headers and leads if you want less soldering.
             </p>
           </div>
         </li>
         <li>
           <span>2</span>
           <div>
-            <h3>Choose</h3>
+            <h3>Connect and set up</h3>
             <p>
-              Compare published versions, profiles and features. See what an
-              installation will change.
+              Follow the wiring guide, install matching firmware, and tell
+              LightVM which pin and how many LEDs you connected.
             </p>
           </div>
         </li>
         <li>
           <span>3</span>
           <div>
-            <h3>Verify</h3>
+            <h3>Make something glow</h3>
             <p>
-              Check the payload before writing, then reconnect to confirm the
-              running build.
+              Try a simple colour at low brightness. Then change a pattern,
+              explore a lesson, or invent your own animation.
             </p>
           </div>
         </li>
       </ol>
     </div>
     <div class="wrap actions">
-      <a class="button dark" href={`${base}install/`}>
-        Set up a device →
+      <a class="button dark" href={`${base}build/`}>
+        Parts and build guide →
       </a>
-      <a class="text-link" href={`${base}releases/`}>
-        Browse released firmware →
+      <a class="text-link" href={`${base}studio/#/devices`}>
+        Already running KajLights? Open your devices →
       </a>
     </div>
   </section>

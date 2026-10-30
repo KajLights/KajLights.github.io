@@ -1,0 +1,241 @@
+---
+import Site from "../layouts/Site.astro";
+const base = import.meta.env.BASE_URL;
+---
+
+<Site
+  title="Build your first lights"
+  description="Build a small LightVM lighting project: choose a board, gather LEDs, cables and power, connect the parts and try your first pattern."
+>
+  <section class="wrap page-intro narrow">
+    <p class="eyebrow">A BOARD, A FEW LIGHTS, YOUR IDEAS</p>
+    <h1>Build your first lights.</h1>
+    <p class="intro">
+      Build your own board setup from ready-made parts. No custom circuit board
+      design needed.
+    </p>
+    <p>
+      This starter project uses a Raspberry Pi Pico 2 W and a short strip or
+      ring of individually addressable LEDs: each light can have its own colour.
+      LightVM is the firmware — the software on the board — that runs your
+      patterns. Start with a handful of lights on your desk and grow from there.
+    </p>
+    <nav class="guide-links" aria-label="In this build guide">
+      <a href="#before-you-buy">Before you buy</a>
+      <a href="#parts">Parts list</a>
+      <a href="#connections">Connections</a>
+      <a href="#first-pattern">First pattern</a>
+    </nav>
+  </section>
+  <section class="wrap narrow" id="before-you-buy">
+    <div class="testing-note">
+      <p class="eyebrow">EARLY TESTING</p>
+      <h2>Check the software before buying the hardware.</h2>
+      <p>
+        This is an experimental build, not a finished kit. Check the{" "}
+        <a href={`${base}releases/`}>release catalogue</a> for an installable
+        LightVM build for your exact board. If none is available, hardware setup
+        currently means compiling firmware with the developer tools. The{" "}
+        <a href="https://github.com/KajLights/lightvm/blob/main/docs/pico2-w.md">
+          Pico 2 W developer guide
+        </a>{" "}
+        covers that route; it needs a local development environment.
+      </p>
+      <p>
+        You can start today in the{" "}
+        <a href="https://kajlights.github.io/lightvm/">
+          browser lighting playground
+        </a>{" "}
+        with no board. Try an example and its on-screen preview before deciding
+        to buy parts. Features and instructions are still being tested, and
+        changes may require wiping and setting up a test board again.
+      </p>
+    </div>
+  </section>
+  <section class="wrap section narrow prose" id="parts">
+    <h2>The bits you’ll need</h2>
+    <ul class="parts-list">
+      <li>
+        <strong>
+          One Raspberry Pi Pico 2 W, preferably with fitted headers.
+        </strong>{" "}
+        Headers are the rows of metal pins that let you plug the board into a
+        breadboard. Use{" "}
+        <a href="https://www.raspberrypi.com/products/raspberry-pi-pico-2/">
+          Raspberry Pi’s retailer finder
+        </a>{" "}
+        and select the exact model. Already own a board? Check the{" "}
+        <a href={`${base}hardware/`}>other supported models</a>; their firmware
+        and pin names may differ.
+      </li>
+      <li>
+        <strong>A computer and a USB data cable.</strong> The Pico 2 W uses
+        Micro-USB; choose a cable that carries data, not a charge-only cable.
+        Desktop Chrome or Edge is the simplest starting point for the browser’s
+        USB device tools. Copying a Pico firmware file to its USB drive does not
+        need those browser tools.
+      </li>
+      <li>
+        <strong>A small 5 V WS2812B-compatible RGB strip or ring.</strong>{" "}
+        Around 8–16 pixels is a manageable first project. Check the voltage, LED
+        type and pixel count in the listing. Choose RGB, not RGBW or an ordinary
+        non-addressable strip, for this example. Fitted leads make connecting it
+        easier.
+      </li>
+      <li>
+        <strong>A breadboard, jumper wires and suitable LED connectors.</strong>{" "}
+        A breadboard holds temporary connections without soldering. If your
+        board has no headers or the LEDs have only bare pads, you will also need
+        headers or leads, a soldering iron and solder — or help fitting them.
+      </li>
+      <li>
+        <strong>A 3.3 V-to-5 V data level shifter.</strong> Use a ready-made
+        74AHCT125-based module suitable for WS2812 data, and follow its pin and
+        enable instructions. This raises the board’s data signal to the level
+        expected by 5 V LEDs.
+      </li>
+      <li>
+        <strong>
+          A 330–470 Ω data resistor and a 500–1000 µF capacitor rated at least
+          6.3 V.
+        </strong>{" "}
+        The resistor goes near the first LED’s data input; the capacitor goes
+        across the LED power input. Check whether your LED or interface module
+        already includes these parts.
+      </li>
+      <li>
+        <strong>
+          A regulated 5 V DC supply for the LEDs, with a suitable connector.
+        </strong>{" "}
+        Size it for the strip manufacturer’s maximum current for your pixel
+        count, including full white. Power the Pico from the computer’s USB for
+        this setup. The LEDs get their own power connection; the board’s GPIO
+        and 3V3 pins do not power the strip.
+      </li>
+    </ul>
+    <p>
+      The level shifter, resistor and capacitor follow{" "}
+      <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/best-practices">
+        Adafruit’s NeoPixel wiring guidance
+      </a>
+      . Its{" "}
+      <a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels">
+        power guide
+      </a>{" "}
+      explains how to choose a supply. Start with a ready-made, enclosed
+      low-voltage adapter. A microphone, extra sensors, enclosure and Wi-Fi
+      setup can all wait until after your first pattern.
+    </p>
+  </section>
+  <section class="wrap section narrow prose" id="connections">
+    <h2>Connect the first few lights</h2>
+    <p>
+      Unplug USB and the LED supply while making connections. Use the{" "}
+      <a href="https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html">
+        official Pico pin diagram
+      </a>{" "}
+      and your level-shifter module’s instructions. This example uses{" "}
+      <strong>GP16</strong>, the signal name printed in the pin diagram, not
+      physical pin number 16.
+    </p>
+    <table class="wiring-table">
+      <caption>Pico 2 W with a separate 5 V LED supply</caption>
+      <thead>
+        <tr>
+          <th scope="col">From</th>
+          <th scope="col">Connect to</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Pico GP16</th>
+          <td>The level shifter’s data input.</td>
+        </tr>
+        <tr>
+          <th scope="row">Level shifter’s output</th>
+          <td>
+            The data resistor, then the LEDs’ DIN (data in). Follow the arrows
+            along the strip away from the board.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">External 5 V supply +</th>
+          <td>The LEDs’ 5 V input and the level shifter’s 5 V supply input.</td>
+        </tr>
+        <tr>
+          <th scope="row">External supply − / ground</th>
+          <td>
+            The LEDs’ ground, level shifter’s ground and a Pico GND pin, all
+            connected together.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Capacitor</th>
+          <td>
+            Across the LED power input: + to 5 V and − to ground. Observe the
+            polarity marked on it.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Pico Micro-USB</th>
+          <td>Your computer, for the board’s power and data.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Keep the data lead short. In this two-supply setup, join the grounds but
+      leave external 5 V disconnected from the Pico’s power and GPIO pins. Check
+      connections and capacitor polarity before powering up. Switch on the LED
+      supply before connecting the Pico’s USB; disconnect USB before switching
+      off the LED supply.
+    </p>
+  </section>
+  <section class="wrap section narrow prose" id="first-pattern">
+    <h2>From assembled parts to your first pattern</h2>
+    <ol>
+      <li>
+        <strong>Install firmware for the exact board.</strong> Follow{" "}
+        <a href={`${base}install/`}>Set up a device</a> if an approved release
+        is available, or the developer guide linked above. For Pico 2 W, hold
+        BOOTSEL while connecting USB and copy its LightVM UF2 file to the{" "}
+        <strong>RP2350</strong> drive. A Pico W firmware file will not work on a
+        Pico 2 W. Firmware installation may erase existing experiments.
+      </li>
+      <li>
+        <strong>
+          Connect in the lighting editor and configure the output.
+        </strong>{" "}
+        Open the{" "}
+        <a href="https://kajlights.github.io/lightvm/">LightVM editor</a>,
+        select the board’s USB connection, and open Configuration. Add a WS2812B
+        output with pin <strong>GP16</strong>, your actual pixel count and the
+        strip’s colour order (commonly GRB). Set a low brightness limit for the
+        first test and save the configuration.
+      </li>
+      <li>
+        <strong>Try a simple colour, then a pattern.</strong> Preview the Color
+        example on the board. If red appears green, check colour order. If
+        nothing lights up, unplug power and check the data direction, shared
+        ground and chosen pin. Once it works, try Rainbow or a beginner lesson
+        and change one thing at a time.
+      </li>
+      <li>
+        <strong>Keep what you make.</strong> Save your editable source to your
+        computer. Deploy an animation and save a device preset when you want the
+        board to keep it; choose its startup behaviour in Configuration if you
+        want it to run again after power is restored.
+      </li>
+    </ol>
+    <p>
+      Need help with the editor? The{" "}
+      <a href="https://github.com/KajLights/lightvm/blob/main/docs/web-editor.md">
+        workspace guide
+      </a>{" "}
+      explains its controls. If you find a gap in this build guide,{" "}
+      <a href="https://github.com/KajLights/KajLights.github.io/issues">
+        share the model, parts and step you reached
+      </a>
+      . That is useful feedback while the project is finding its feet.
+    </p>
+  </section>
+</Site>
