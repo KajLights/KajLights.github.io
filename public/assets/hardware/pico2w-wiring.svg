@@ -7,7 +7,7 @@
   </defs>
   <rect width="1280" height="680" rx="20" fill="#f8f7f1"/>
   <g font-family="system-ui, sans-serif" fill="#123e46">
-    <text x="42" y="36" font-size="16" font-weight="700">FOLLOW THE CONNECTIONS: USB, LED DATA, POWER AND COMMON GROUND</text>
+    <text x="42" y="36" font-size="16" font-weight="700">NEXT LEVEL: ADD SIGNAL MARGIN AND PROTECTION</text>
     <rect x="50" y="62" width="220" height="76" rx="12" fill="#edeaf7" stroke="#6661a6" stroke-width="2"/>
     <text x="160" y="94" font-size="22" text-anchor="middle" font-weight="700">Computer</text>
     <text x="160" y="120" font-size="17" text-anchor="middle">USB power + data</text>

@@ -118,6 +118,8 @@ The [October 2026 content review](content-review.md) records the learning aims a
 route coverage. Board photos and component pictures live in
 `public/assets/hardware/`; their sources, licences and display changes are listed
 on `/image-credits/`. `src/data/board-images.json` selects individual Pico boards
-from the original manufacturer family photographs. The original wiring SVG is a
-functional connection diagram; the adjacent text and table describe the same
-connections for readers who cannot use the image.
+from the original manufacturer family photographs. The quick and upgraded wiring
+SVGs show functional connections; the adjacent text and helper notes describe the
+same connections for readers who cannot use the images. The build guide puts the
+first colour and playful challenges first, with setup and electrical detail in
+optional sections for adult helpers.

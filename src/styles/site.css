@@ -587,6 +587,25 @@ button.link {
 .prose > p {
   max-width: 760px;
 }
+.guide-detail {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: white;
+  max-width: 830px;
+}
+.guide-detail summary {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.guide-detail p + p {
+  margin-top: 16px;
+}
+.page-intro .actions + .small {
+  margin-top: 18px;
+}
 .filters {
   display: flex;
   gap: 18px;
