@@ -1,0 +1,44 @@
+{
+  "pico": {
+    "file": "pico-family.png",
+    "width": 1024,
+    "height": 487,
+    "viewBox": "5 0 205 487",
+    "note": "Micro-USB · no Wi-Fi"
+  },
+  "pico_w": {
+    "file": "pico-family.png",
+    "width": 1024,
+    "height": 487,
+    "viewBox": "545 0 205 487",
+    "note": "Micro-USB · Wi-Fi hardware"
+  },
+  "pico2_w": {
+    "file": "pico2-family.png",
+    "width": 1080,
+    "height": 549,
+    "viewBox": "560 15 220 520",
+    "note": "Micro-USB · our build example"
+  },
+  "xiao_esp32c3": {
+    "file": "xiao-c3.png",
+    "width": 500,
+    "height": 636,
+    "viewBox": "0 0 500 636",
+    "note": "USB-C · read the C3 model label"
+  },
+  "xiao_esp32s3": {
+    "file": "xiao-s3.jpg",
+    "width": 1400,
+    "height": 1050,
+    "viewBox": "0 0 1400 1050",
+    "note": "USB-C · base board shown, not Sense"
+  },
+  "xiao_esp32c6": {
+    "file": "xiao-c6.jpg",
+    "width": 1400,
+    "height": 1050,
+    "viewBox": "0 0 1400 1050",
+    "note": "USB-C · read the C6 model label"
+  }
+}

@@ -1,7 +1,8 @@
 # KajLights website
 
-The main website owns public guidance, the release catalogue and the device/installer
-workspace. LightVM and kaj-fi own their implementations and release artifacts.
+The main website owns the project introduction, learning routes, illustrated build
+guide, release catalogue and device/installer workspace. LightVM and kaj-fi own
+their implementations and release artifacts.
 This Astro site is the catalogue/maintenance stage; moving the complete lighting
 editor and lessons here is a separate stage.
 
@@ -94,19 +95,12 @@ trusted sources: policy and published releases are re-read. Scheduled refresh
 detects changed, missing or newly published releases without cross-repository
 write credentials. Import/test/build failures prevent deployment.
 
-The existing live site still uses `main:/docs`. Its Jekyll source remains in
-`docs/` until the explicit cutover and is not Astro input. This PR does not change
-live Pages settings. For the agreed launch:
+The live site uses **GitHub Actions** Pages deployment with repository variable
+**PUBLISH_WEBSITE=true**. The CNAME remains `kajlights.com`. Retired Jekyll source
+in `docs/` is not Astro input; edit `src/pages/` for public content.
 
-1. Set repository Settings → Pages → Source to **GitHub Actions**.
-2. Set the repository Actions variable **PUBLISH_WEBSITE=true**.
-3. Run the website workflow on main and verify `https://kajlights.com/`, the
-   catalogue and `/studio/#/devices`. The CNAME remains `kajlights.com`.
-4. Remove retired Jekyll source after verifying the new deployment. Retain the
-   previous deployment/artifact for operational rollback.
-
-After cutover, successful main and reconciliation builds deploy a complete Pages
-snapshot. PRs never deploy. CI saves the built site, import lock, pin and policy as
+Successful main and reconciliation builds deploy a complete Pages snapshot.
+PRs never deploy. CI saves the built site, import lock, pin and policy as
 a 14-day review artifact. To reproduce an acquisition, restore its policy and
 implementation pin, then run:
 
@@ -117,3 +111,13 @@ build/venv/bin/python scripts/import-releases.py --locked /path/to/import-lock.j
 Locked imports re-verify the exact release inventory and manifest hashes, reject
 changed/missing locked releases and ignore later releases. Website workflows never
 create firmware tags or publish firmware releases.
+
+## Content and images
+
+The [October 2026 content review](content-review.md) records the learning aims and
+route coverage. Board photos and component pictures live in
+`public/assets/hardware/`; their sources, licences and display changes are listed
+on `/image-credits/`. `src/data/board-images.json` selects individual Pico boards
+from the original manufacturer family photographs. The original wiring SVG is a
+functional connection diagram; the adjacent text and table describe the same
+connections for readers who cannot use the image.

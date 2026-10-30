@@ -1,0 +1,32 @@
+---
+import photos from "../data/board-images.json";
+interface Props {
+  id: keyof typeof photos;
+  name: string;
+}
+const { id, name } = Astro.props;
+const photo = photos[id];
+const [x, y, width, height] = photo.viewBox.split(" ").map(Number);
+const cropId = `board-crop-${id}`;
+const base = import.meta.env.BASE_URL;
+---
+
+<svg
+  class="board-photo"
+  viewBox={photo.viewBox}
+  role="img"
+  aria-label={`Photograph of ${name}`}
+>
+  <title>{name}</title>
+  <defs>
+    <clipPath id={cropId}>
+      <rect x={x} y={y} width={width} height={height} />
+    </clipPath>
+  </defs>
+  <image
+    href={`${base}assets/hardware/${photo.file}`}
+    width={photo.width}
+    height={photo.height}
+    clip-path={`url(#${cropId})`}
+  />
+</svg>

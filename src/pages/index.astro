@@ -11,7 +11,7 @@ const pattern = [
   <section class="hero wrap">
     <div>
       <p class="eyebrow">
-        <span class="live-dot"></span> LOGIC · SIGNALS · CONNECTIONS
+        <span class="live-dot"></span> ELECTRONICS · COMPUTING · COMMUNICATIONS
       </p>
       <h1>
         Small lights.
@@ -19,13 +19,15 @@ const pattern = [
         <em>Big ideas.</em>
       </h1>
       <p class="intro">
-        KajLights is an experimental project for learning and making with
-        programmable lights, sound and small connected devices.
+        Learn electronics, computing and communications by making things with
+        microcontrollers: small computers that connect ideas to the physical
+        world.
       </p>
       <p>
-        Turn a few lines of code into a moving colour pattern. Change a rule and
-        see what happens. Start in your browser, then take your ideas into the
-        physical world when you’re ready.
+        Make a light glow. Find out how power, instructions and messages make it
+        happen. Use that understanding to imagine what else you could build.
+        KajLights is an experimental workshop for curious people, with a browser
+        playground and projects to make on your desk.
       </p>
       <div class="actions">
         <a class="button dark" href="https://kajlights.github.io/lightvm/">
@@ -80,15 +82,15 @@ const pattern = [
   </aside>
   <section class="wrap section split">
     <div>
-      <p class="eyebrow">WHY LIGHTS?</p>
-      <h2>Make computing something you can see.</h2>
+      <p class="eyebrow">UNDERSTAND THE WHOLE LITTLE SYSTEM</p>
+      <h2>A light is the beginning of a bigger idea.</h2>
     </div>
     <div>
       <p>
-        A loop becomes a chase of lights. A changing number becomes a colour. A
-        message from another device becomes something you can notice. The aim is
-        to make programming, electronics and connected systems approachable
-        through small experiments with visible results.
+        The circuit supplies energy. The microcontroller runs instructions. A
+        signal tells each LED what colour to show. A network can carry a message
+        from somewhere else. Following that chain connects electronics,
+        computing and communications in one project you can see and investigate.
       </p>
       <p>
         LightVM is the lighting part of the project: write patterns using
@@ -98,16 +100,21 @@ const pattern = [
         is not yet available.
       </p>
       <p>
-        You can play with an example, follow a lesson or make something of your
-        own. You don’t need a board or an account to try the browser lighting
-        playground. Teachers and curious makers are welcome too; the learning
-        material is still being developed and tested.
+        Play with an example, ask why it behaves that way, or make something of
+        your own. You don’t need a board or an account to try the browser
+        playground. Our learning path connects those first experiments to real
+        circuits and, when you’re ready, connected devices.
       </p>
+      <div class="actions">
+        <a class="text-link" href={`${base}learn/`}>
+          Choose a learning starting point →
+        </a>
+      </div>
     </div>
   </section>
   <section class="wrap section">
     <div class="section-heading">
-      <p class="eyebrow">ROOM TO PLAY AND MAKE</p>
+      <p class="eyebrow">THREE THREADS, ONE PROJECT</p>
       <h2>
         Something to make.
         <br />
@@ -117,37 +124,61 @@ const pattern = [
     <div class="subjects">
       <article>
         <span class="number">01</span>
-        <h3>Computing logic</h3>
+        <h3>Electronics</h3>
         <p>
-          Patterns, choices, repetition and state. Change the instructions and
-          follow the result.
+          Power, current, connections and signals. Trace the circuit, recognise
+          the parts and learn why a data wire cannot power a strip of lights.
         </p>
-        <a class="text-link" href="https://kajlights.github.io/lightvm/">
-          Open the light editor ↗
+        <a class="text-link" href={`${base}learn/#electronics`}>
+          Follow the circuit →
         </a>
       </article>
       <article>
         <span class="number">02</span>
-        <h3>Hardware & signals</h3>
+        <h3>Computing</h3>
         <p>
-          See how a small board meets the physical world through pins, timing,
-          light and sound.
+          Instructions, state, memory and time. Predict a pattern, change a rule
+          and investigate how a processor turns a program into behaviour.
         </p>
-        <a class="text-link" href={`${base}hardware/`}>
-          Meet the boards →
+        <a class="text-link" href={`${base}learn/#computing`}>
+          Explore the instructions →
         </a>
       </article>
       <article>
         <span class="number">03</span>
-        <h3>Connected systems</h3>
+        <h3>Networking & communications</h3>
         <p>
-          Give a device a name, discover what it can do, and investigate the
-          messages between things.
+          Messages, addresses and shared rules. Explore how devices find one
+          another, exchange information and behave when a connection goes away.
         </p>
-        <a class="text-link" href={`${base}studio/#/devices`}>
-          Connect a device →
+        <a class="text-link" href={`${base}learn/#communications`}>
+          Follow a message →
         </a>
       </article>
+    </div>
+  </section>
+  <section class="wrap section split" aria-labelledby="imagine-title">
+    <div>
+      <p class="eyebrow">MAKING IN AN AI-READY WORLD</p>
+      <h2 id="imagine-title">
+        Understanding gives imagination more to work with.
+      </h2>
+    </div>
+    <div>
+      <p>
+        AI can help you write a program or develop an idea. Knowing what a
+        sensor can measure, what a microcontroller can control and how a message
+        travels helps you recognise possibilities, ask better questions and
+        judge whether the result makes sense.
+      </p>
+      <p>
+        “If you can’t imagine it, you can’t ask for it to be built.” The aim is
+        to grow that imagination through experience: try something, explain what
+        happened and use what you learn to make the next thing.
+      </p>
+      <a class="text-link" href={`${base}about/#why-understanding`}>
+        Why this matters, and our link with Found in Space →
+      </a>
     </div>
   </section>
   <section class="wrap section split" id="what-is-a-board">

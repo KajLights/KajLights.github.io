@@ -1,0 +1,22 @@
+---
+import BoardPhoto from "./BoardPhoto.astro";
+import boards from "../data/boards.json";
+import photos from "../data/board-images.json";
+const base = import.meta.env.BASE_URL;
+---
+
+<div class="board-gallery">
+  {boards.map((board) => (
+    <figure class="board-choice">
+      <BoardPhoto id={board.id as keyof typeof photos} name={board.name} />
+      <figcaption>
+        <a href={`${base}hardware/#${board.id}`}>{board.name}</a>
+        <p>{photos[board.id as keyof typeof photos].note}</p>
+      </figcaption>
+    </figure>
+  ))}
+</div>
+<p class="image-credit">
+  Photos are enlarged and not to the same scale. Raspberry Pi and Seeed Studio;{" "}
+  <a href={`${base}image-credits/`}>image sources and licences</a>.
+</p>

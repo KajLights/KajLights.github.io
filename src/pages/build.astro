@@ -1,6 +1,39 @@
 ---
 import Site from "../layouts/Site.astro";
+import BoardGallery from "../components/BoardGallery.astro";
 const base = import.meta.env.BASE_URL;
+const parts = [
+  {
+    file: "neopixel.png",
+    name: "An addressable RGB pixel",
+    description:
+      "A single pixel shown close up. For this build, buy a prewired strip or ring containing 8–16 pixels; the data travels from one to the next.",
+  },
+  {
+    file: "breadboard.png",
+    name: "Breadboard",
+    description:
+      "Its connected holes hold a temporary circuit. Use the board with soldered headers; the bare edge holes alone will not make a reliable connection.",
+  },
+  {
+    file: "jumper-wires.png",
+    name: "Jumper wires",
+    description:
+      "Plug-in leads join the circuit. Choose male or female ends to suit your board headers, breadboard and modules.",
+  },
+  {
+    file: "resistor-330r.png",
+    name: "Data resistor",
+    description:
+      "A 330 Ω resistor is shown. Use 330–470 Ω in the data line near the first LED; it protects the signal connection, not the strip’s power supply.",
+  },
+  {
+    file: "capacitor.png",
+    name: "Electrolytic capacitor",
+    description:
+      "Shape example only: buy 500–1000 µF, rated at least 6.3 V. The stripe marks the negative side. Check the value and polarity on your own part.",
+  },
+];
 ---
 
 <Site
@@ -11,17 +44,20 @@ const base = import.meta.env.BASE_URL;
     <p class="eyebrow">A BOARD, A FEW LIGHTS, YOUR IDEAS</p>
     <h1>Build your first lights.</h1>
     <p class="intro">
-      Build your own board setup from ready-made parts. No custom circuit board
-      design needed.
+      See the parts, follow the connections and make a small system you can
+      explain.
     </p>
     <p>
       This starter project uses a Raspberry Pi Pico 2 W and a short strip or
       ring of individually addressable LEDs: each light can have its own colour.
       LightVM is the firmware — the software on the board — that runs your
-      patterns. Start with a handful of lights on your desk and grow from there.
+      patterns. You are assembling ready-made parts, not designing a circuit
+      board from scratch. Along the way, follow the power, the computation and
+      the data signal: each is a different part of making the lights work.
     </p>
     <nav class="guide-links" aria-label="In this build guide">
       <a href="#before-you-buy">Before you buy</a>
+      <a href="#meet-the-boards">Board pictures</a>
       <a href="#parts">Parts list</a>
       <a href="#connections">Connections</a>
       <a href="#first-pattern">First pattern</a>
@@ -51,6 +87,70 @@ const base = import.meta.env.BASE_URL;
         changes may require wiping and setting up a test board again.
       </p>
     </div>
+  </section>
+  <section class="wrap section" id="meet-the-boards">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">RECOGNISE WHAT IS IN YOUR HAND</p>
+        <h2>Meet the boards.</h2>
+      </div>
+    </div>
+    <p class="section-lede">
+      The Pico 2 W is the example below. The other photos help you recognise
+      supported alternatives; use their own firmware and pin guide. A similar
+      shape does not mean the same wiring. Check the model printed on the board.
+    </p>
+    <BoardGallery />
+    <div class="subjects board-anatomy">
+      <article>
+        <h3>USB socket</h3>
+        <p>
+          The silver socket connects the board to your computer for power and
+          data. Pico boards use Micro-USB; these XIAO boards use USB-C.
+        </p>
+      </article>
+      <article>
+        <h3>Microcontroller</h3>
+        <p>
+          The processor and memory run the program. On a Pico the main chip is
+          visible; on these XIAO boards it is under the metal shield.
+        </p>
+      </article>
+      <article>
+        <h3>Pads and headers</h3>
+        <p>
+          The rows along the edges connect to other parts. GP16 names a
+          programmable signal; GND is ground. Fitted header pins make these
+          connections easier to plug in.
+        </p>
+      </article>
+    </div>
+  </section>
+  <section class="wrap section" aria-labelledby="parts-in-pictures">
+    <p class="eyebrow">A FEW OF THE SMALLER BITS</p>
+    <h2 id="parts-in-pictures">What do the components look like?</h2>
+    <div class="component-gallery">
+      {parts.map((part) => (
+        <figure class="component-card">
+          <img
+            src={`${base}assets/hardware/${part.file}`}
+            alt={part.name}
+            width="600"
+            height="500"
+            loading="lazy"
+          />
+          <figcaption>
+            <h3>{part.name}</h3>
+            <p>{part.description}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="image-credit">
+      Component images: Raspberry Pi Foundation, CC BY 4.0.{" "}
+      <a href={`${base}image-credits/`}>Sources and licences</a>. These pictures
+      help identify types of parts; the list below specifies the values to buy.
+    </p>
   </section>
   <section class="wrap section narrow prose" id="parts">
     <h2>The bits you’ll need</h2>
@@ -90,9 +190,9 @@ const base = import.meta.env.BASE_URL;
       </li>
       <li>
         <strong>A 3.3 V-to-5 V data level shifter.</strong> Use a ready-made
-        74AHCT125-based module suitable for WS2812 data, and follow its pin and
-        enable instructions. This raises the board’s data signal to the level
-        expected by 5 V LEDs.
+        74AHCT125-based module with supply decoupling, suitable for WS2812 data,
+        and follow its pin and enable instructions. This raises the board’s data
+        signal to the level expected by 5 V LEDs.
       </li>
       <li>
         <strong>
@@ -127,7 +227,7 @@ const base = import.meta.env.BASE_URL;
       setup can all wait until after your first pattern.
     </p>
   </section>
-  <section class="wrap section narrow prose" id="connections">
+  <section class="wrap section prose" id="connections">
     <h2>Connect the first few lights</h2>
     <p>
       Unplug USB and the LED supply while making connections. Use the{" "}
@@ -138,6 +238,37 @@ const base = import.meta.env.BASE_URL;
       <strong>GP16</strong>, the signal name printed in the pin diagram, not
       physical pin number 16.
     </p>
+    <figure class="wiring-figure">
+      <a
+        href={`${base}assets/hardware/pico2w-wiring.svg`}
+        aria-label="Open the wiring diagram at full size"
+      >
+        <img
+          src={`${base}assets/hardware/pico2w-wiring.svg`}
+          width="1280"
+          height="680"
+          alt="Computer to Pico by USB. Pico GP16 to level shifter, then resistor, then LED DIN. A separate 5 V supply powers the shifter and LEDs; all grounds join. Capacitor positive goes to LED 5 V and negative to ground."
+          loading="lazy"
+        />
+      </a>
+      <figcaption>
+        Read the labels as well as the colours: purple is USB, teal is LED data,
+        red is +5 V and dark grey is ground. This shows connections, not
+        breadboard holes or physical pin positions.{" "}
+        <a href={`${base}assets/hardware/pico2w-wiring.svg`}>
+          Open the full-size diagram ↗
+        </a>
+      </figcaption>
+    </figure>
+    <div class="concept-note">
+      <h3>Three things to notice</h3>
+      <p>
+        The strip’s power comes from the 5 V supply. Its instructions come from
+        GP16 through the level shifter. Ground gives the board, shifter and LEDs
+        a shared electrical reference. The capacitor sits across the power
+        input; the resistor sits in the data path.
+      </p>
+    </div>
     <table class="wiring-table">
       <caption>Pico 2 W with a separate 5 V LED supply</caption>
       <thead>
@@ -156,6 +287,13 @@ const base = import.meta.env.BASE_URL;
           <td>
             The data resistor, then the LEDs’ DIN (data in). Follow the arrows
             along the strip away from the board.
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Module output enable (OE), if exposed</th>
+          <td>
+            The 74AHCT125 enable is active-low: connect it to GND. Some modules
+            already do this. Follow the module’s own pin diagram.
           </td>
         </tr>
         <tr>
@@ -237,5 +375,20 @@ const base = import.meta.env.BASE_URL;
       </a>
       . That is useful feedback while the project is finding its feet.
     </p>
+  </section>
+  <section class="wrap section narrow prose">
+    <h2>Now investigate what you made</h2>
+    <p>
+      Predict what will change when you alter the timing or colour. Trace the
+      instruction from your program through GP16 to the first pixel. Explain why
+      the power wire still matters when the program is correct.
+    </p>
+    <p>
+      When you are ready, extend the same investigation to messages over USB,
+      Wi-Fi or MQTT. Each connection has rules and limits to understand.
+    </p>
+    <a class="text-link" href={`${base}learn/`}>
+      Continue with electronics, computing and communications →
+    </a>
   </section>
 </Site>

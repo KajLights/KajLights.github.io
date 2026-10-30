@@ -499,28 +499,93 @@ button.link {
   font-size: 0.85rem;
   margin-bottom: 18px;
 }
-.board-art {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #2a6258;
-  border: 5px solid #94bbae;
-  border-radius: 5px;
-  width: 96px;
-  height: 58px;
-  margin: 5px 0 25px;
+.board-gallery,
+.component-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
 }
-.board-art b {
-  font-size: 0.7rem;
-  background: #103d3f;
-  color: #d7e3d9;
-  border: 2px solid #6a9290;
-  padding: 8px;
+.board-choice,
+.component-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
 }
-.board-art i {
-  height: 42px;
-  width: 5px;
-  background: repeating-linear-gradient(#e6d8aa 0 4px, transparent 4px 7px);
+.board-photo {
+  display: block;
+  width: 100%;
+  height: 220px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.board-choice figcaption > a {
+  font-weight: 700;
+}
+.board-choice figcaption p,
+.component-card p {
+  margin-top: 10px;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+.component-gallery {
+  margin-top: 30px;
+}
+.component-card img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 22px;
+}
+.image-credit {
+  margin-top: 20px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.section-lede {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+.board-anatomy {
+  margin-top: 42px;
+}
+.learning-prompt,
+.concept-note {
+  margin: 28px 0;
+  padding: 24px;
+  background: #e6efea;
+  border-left: 4px solid #408475;
+  border-radius: 0 10px 10px 0;
+}
+.concept-note p {
+  margin-top: 12px;
+}
+.wiring-figure {
+  margin: 30px 0;
+}
+.wiring-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.wiring-figure figcaption {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  margin-top: 16px;
+  max-width: 760px;
+}
+.wiring-figure figcaption a {
+  display: block;
+  margin-top: 8px;
+}
+.prose > .eyebrow + h2 {
+  margin-top: 12px;
+}
+.prose > p {
+  max-width: 760px;
 }
 .filters {
   display: flex;
@@ -873,7 +938,7 @@ details pre {
 .full-width {
   width: 100%;
 }
-@media (max-width: 820px) {
+@media (max-width: 980px) {
   .site-header {
     flex-wrap: wrap;
     gap: 17px;
@@ -889,6 +954,8 @@ details pre {
     padding: 8px 11px;
     gap: 8px;
   }
+}
+@media (max-width: 820px) {
   .wrap {
     padding-left: 22px;
     padding-right: 22px;
@@ -908,7 +975,9 @@ details pre {
   .split {
     gap: 35px;
   }
-  .board-grid {
+  .board-grid,
+  .board-gallery,
+  .component-gallery {
     grid-template-columns: repeat(2, 1fr);
   }
   .section-heading {
@@ -961,7 +1030,9 @@ details pre {
   }
   .subjects,
   .split,
-  .board-grid {
+  .board-grid,
+  .board-gallery,
+  .component-gallery {
     grid-template-columns: 1fr;
   }
   .subjects {
